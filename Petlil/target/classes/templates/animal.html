@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+    <form action="#" id="cadAnimal" name="cadAnimal" th:action="@{/cadanimal}" th:object="${animal}" method="post">
+
+        <label>Nome:</label>
+        <input type="text" name="nome" id="nome" th:field="*{nomeAnimal}" /><br>
+
+        <label>Idade:</label>
+        <input type="text" name="idade" id="idade" th:field="*{idadeAnimal}" /><br>
+
+        <label>Espécie:</label>
+        <input type="text" name="especie" id="especie" th:field="*{especieAnimal}" /><br>
+
+        <label>Raça:</label>
+        <input type="text" name="raca" id="raca" th:field="*{racaAnimal}" /><br>
+
+        <label>Peso:</label>
+        <input type="text" name="peso" id="peso" th:field="*{pesoAnimal}" /><br>
+
+        <label>Dono do Animal:</label>
+        <input type="text" name="dono" id="dono" th:field="*{dono}" /><br>
+         <!--Falta isso aqui -->
+
+        <label>Funcionário que está atendendo:</label>
+        <input type="text" name="funcionarioatendido" id="funcionarioatendido" th:field="*{funcionarioatendido}" /><br>
+         <!--Falta isso aqui -->
+
+        <button>Cadastrar</button>
+
+
+    </form>    
+    
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+    <form action="#" id="cadCliente" name="cadCliente" th:action="@{/cadCliente}" th:object="${cliente}" method="post">
+
+        <label>Nome:</label>
+        <input type="text" name="nome" id="nome" th:field="*{donoNome}" /><br>
+        
+        <label>Endereço:</label>
+        <input type="text" name="endereco" id="endereco" th:field="*{endereco}" /><br>
+
+        <label>Telefone:</label>
+        <input type="text" name="telefone" id="telefone" th:field="*{telefone}" /><br>
+
+         <label>Animais:</label>
+         <select name="animais" id="animais" required>
+            <!--Fazer as coisas aqui que tá faltando -->
+            </select>
+
+        <button>Cadastrar</button>
+
+
+    </form>    
+    
+</body>
+</html>
+
