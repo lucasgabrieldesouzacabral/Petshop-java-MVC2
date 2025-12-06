@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Atualizar Cliente</title>
+</head>
+<body>
+
+<h1>Atualizar Cliente</h1>
+
+<form th:action="@{'/clientes/' + ${cliente.idDonoAnimal}}" 
+      method="post" 
+      th:object="${cliente}">
+
+    <label>ID:</label>
+    <input type="text" th:value="${cliente.idDonoAnimal}" readonly /><br><br>
+
+    <label>Nome do Dono:</label>
+    <input type="text" th:field="*{donoNome}" /><br><br>
+
+    <label>Telefone:</label>
+    <input type="text" th:field="*{telefone}" /><br><br>
+
+    <label>Endereço:</label>
+    <input type="text" th:field="*{endereco}" /><br><br>
+
+    <button type="submit">Salvar Alterações</button>
+</form>
+
+<br>
+<a href="/clientes">Cancelar</a>
+
+</body>
+</html>

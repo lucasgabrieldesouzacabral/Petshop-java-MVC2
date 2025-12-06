@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Excluir Animal</title></head>
+<body>
+
+<h1>Excluir Animal</h1>
+
+<p>Tem certeza que deseja excluir este animal?</p>
+
+<ul>
+    <li><strong>ID:</strong> <span th:text="${animal.idAnimal}"></span></li>
+    <li><strong>Nome:</strong> <span th:text="${animal.nomeAnimal}"></span></li>
+    <li><strong>Dono:</strong> <span th:text="${animal.dono != null ? animal.dono.donoNome : 'Sem dono'}"></span></li>
+</ul>
+
+<form th:action="@{'/animais/excluir/' + ${animal.idAnimal}}" method="post">
+    <button type="submit">Confirmar Exclusão</button>
+</form>
+
+<br>
+<a href="/animais"><button>Cancelar</button></a>
+
+</body>
+</html>

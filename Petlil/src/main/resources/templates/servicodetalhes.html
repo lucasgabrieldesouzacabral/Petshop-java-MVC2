@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Serviço</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        p { font-size: 16px; margin: 5px 0; }
+        .btn { padding: 8px 15px; margin: 5px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        .btn:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+
+<h1>Detalhes do Serviço</h1>
+
+<p><strong>ID:</strong> <span th:text="${servico.idServico}"></span></p>
+<p><strong>Nome:</strong> <span th:text="${servico.nomeItem}"></span></p>
+<p><strong>Preço:</strong> R$ <span th:text="${servico.precoItem}"></span></p>
+<p><strong>Horário:</strong> <span th:text="${servico.servicoHorario}"></span></p>
+
+<p><strong>Animal:</strong> <span th:text="${servico.animal != null ? servico.animal.nomeAnimal : '—'}"></span></p>
+<p><strong>Espécie:</strong> <span th:text="${servico.animal != null ? servico.animal.especieAnimal : '—'}"></span></p>
+<p><strong>Raça:</strong> <span th:text="${servico.animal != null ? servico.animal.racaAnimal : '—'}"></span></p>
+<p><strong>Peso:</strong> <span th:text="${servico.animal != null ? servico.animal.pesoAnimal : '—'}"></span> kg</p>
+<p><strong>Dono do Animal:</strong> <span th:text="${servico.animal != null && servico.animal.dono != null ? servico.animal.dono.donoNome : '—'}"></span></p>
+
+<p><strong>Funcionário:</strong> <span th:text="${servico.funcionario != null ? servico.funcionario.nomeFuncionario : '—'}"></span></p>
+<p><strong>Função:</strong> <span th:text="${servico.funcionario != null ? servico.funcionario.funcao : '—'}"></span></p>
+<p><strong>Salário:</strong> R$ <span th:text="${servico.funcionario != null ? servico.funcionario.salario : '—'}"></span></p>
+
+<a href="/servicos"><button class="btn">Voltar</button></a>
+<a th:href="@{|/servicos/editar/${servico.idServico}|}"><button class="btn">Editar</button></a>
+<a th:href="@{|/servicos/excluir/${servico.idServico}|}"><button class="btn" style="background-color: #f44336;">Excluir</button></a>
+
+</body>
+</html>

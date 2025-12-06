@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Detalhes Funcionário</title></head>
+<body>
+
+<h1>Detalhes do Funcionário</h1>
+
+<p><strong>ID:</strong> <span th:text="${funcionario.id}"></span></p>
+<p><strong>Nome:</strong> <span th:text="${funcionario.nomeFuncionario}"></span></p>
+<p><strong>Função:</strong> <span th:text="${funcionario.funcao}"></span></p>
+<p><strong>Salário:</strong> R$ <span th:text="${funcionario.salario}"></span></p>
+
+<hr>
+
+<h3>Animais Atendidos ( <span th:text="${#lists.size(animaisAtendidos)}"></span> )</h3>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Espécie</th>
+        <th>Raça</th>
+    </tr>
+
+    <tr th:each="a : ${animaisAtendidos}">
+        <td th:text="${a.idAnimal}"></td>
+        <td th:text="${a.nomeAnimal}"></td>
+        <td th:text="${a.especieAnimal}"></td>
+        <td th:text="${a.racaAnimal}"></td>
+    </tr>
+</table>
+
+<br>
+<a href="/funcionarios"><button>Voltar</button></a>
+
+</body>
+</html>

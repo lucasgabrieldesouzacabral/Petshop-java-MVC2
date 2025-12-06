@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+
+<h1 th:text="${servico.idServico == 0 ? 'Novo Serviço' : 'Editar Serviço'}"></h1>
+
+<form th:action="${servico.idServico == 0 ? '/servicos' : '/servicos/' + ${servico.idServico}}"
+      method="post" th:object="${servico}">
+
+    <label>Nome:</label>
+    <input type="text" th:field="*{nomeItem}"><br><br>
+
+    <label>Preço:</label>
+    <input type="number" step="0.01" th:field="*{precoItem}"><br><br>
+
+    <label>Horário:</label>
+    <input type="text" th:field="*{servicoHorario}"><br><br>
+
+    <label>Animal:</label>
+    <select th:field="*{animal}">
+        <option value="">Selecione...</option>
+        <option th:each="a : ${animais}" th:value="${a}" th:text="${a.nomeAnimal}"></option>
+    </select><br><br>
+
+    <label>Funcionário:</label>
+    <select th:field="*{funcionario}">
+        <option value="">Selecione...</option>
+        <option th:each="f : ${funcionarios}" th:value="${f}" th:text="${f.nomeFuncionario}"></option>
+    </select><br><br>
+
+    <button type="submit">Salvar</button>
+</form>
+
+<a href="/servicos"><button>Cancelar</button></a>
+
+</body>
+</html>

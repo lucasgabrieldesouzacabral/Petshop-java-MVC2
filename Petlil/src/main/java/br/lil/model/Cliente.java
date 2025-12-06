@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente {
+    private int idDonoAnimal;      
+    private String donoNome; 
     private String donoNome;
     private String telefone;
     private String endereco;

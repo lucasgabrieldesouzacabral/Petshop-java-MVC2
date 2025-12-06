@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nova Conta</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        label { display: block; margin-top: 10px; }
+        select, input { margin-top: 5px; width: 300px; padding: 5px; }
+        .multiselect { height: 100px; }
+        .btn { margin-top: 15px; padding: 8px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        .btn:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+
+<h1>Nova Conta / Agendamento</h1>
+
+<form th:action="@{/contas/salvar}" th:object="${conta}" method="post">
+    
+    <label>Cliente:</label>
+    <select th:field="*{cliente}" required>
+        <option th:each="c : ${clientes}" th:value="${c}" th:text="${c.donoNome}"></option>
+    </select>
+
+    <label>Animal:</label>
+    <select th:field="*{atendente}" required>
+        <option th:each="a : ${animais}" th:value="${a}" th:text="${a.nomeAnimal + ' (' + a.dono.donoNome + ')'}"></option>
+    </select>
+
+    <label>Funcionário:</label>
+    <select th:field="*{atendente}" required>
+        <option th:each="f : ${funcionarios}" th:value="${f}" th:text="${f.nomeFuncionario}"></option>
+    </select>
+
+    <label>Produtos:</label>
+    <select th:name="produtosSelecionados" multiple class="multiselect">
+        <option th:each="p : ${produtos}" th:value="${p.idProduto}" th:text="${p.nomeItem + ' - R$' + p.precoItem}"></option>
+    </select>
+
+    <label>Serviços:</label>
+    <select th:name="servicosSelecionados" multiple class="multiselect">
+        <option th:each="s : ${servicos}" th:value="${s.idServico}" th:text="${s.nomeItem + ' - R$' + s.precoItem}"></option>
+    </select>
+
+    <label>Tipo de Pagamento:</label>
+    <select th:field="*{tipoPagamento}" required>
+        <option th:each="tp : ${tiposPagamento}" th:value="${tp}" th:text="${tp.nomePagamento}"></option>
+    </select>
+
+    <button type="submit" class="btn">Salvar Conta</button>
+</form>
+
+<a href="/contas"><button class="btn" style="background-color:#ccc;color:#000;">Voltar</button></a>
+
+</body>
+</html>

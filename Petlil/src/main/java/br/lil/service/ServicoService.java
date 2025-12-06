@@ -11,18 +11,38 @@ import br.ll.model.Servico;
 @Service
 public class ServicoService {
 
-    @Autowired
-    private ServicoDao servicoDao;
+    private List<Servico> servicos = new ArrayList<>();
+    private int autoIncrement = 1;
 
     public List<Servico> listarTodos() {
-        return servicoDao.findAll();
+        return servicos;
     }
 
-    public Servico salvar(Servico servico) {
-        return servicoDao.save(servico);
+    public Servico buscarPorId(int id) {
+        return servicos.stream()
+            .filter(s -> s.getIdServico() == id)
+            .findFirst()
+            .orElse(null);
     }
 
-    public void deletar(Long id) {
-        servicoDao.deleteById(id);
+    public void salvar(Servico servico) {
+        servico.setIdServico(autoIncrement++);
+        servicos.add(servico);
+    }
+
+    public void atualizar(Servico atualizado) {
+        Servico s = buscarPorId(atualizado.getIdServico());
+
+        if (s != null) {
+            s.setNomeItem(atualizado.getnomeItem());
+            s.setPrecoItem(atualizado.getprecoItem());
+            s.setServicoHorario(atualizado.getServicoHorario());
+            s.setAnimal(atualizado.getAnimal());
+            s.setFuncionario(atualizado.getFuncionario());
+        }
+    }
+
+    public void excluir(int id) {
+        servicos.removeIf(s -> s.getIdServico() == id);
     }
 }

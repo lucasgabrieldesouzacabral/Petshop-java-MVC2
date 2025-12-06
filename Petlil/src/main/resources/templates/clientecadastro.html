@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+   <h1 th:text="${cliente.idDonoAnimal == 0 ? 'Novo Cliente' : 'Editar Cliente'}"></h1>
+
+    <form th:action="${cliente.idDonoAnimal == 0 ? '/clientes' : '/clientes/' + ${cliente.idDonoAnimal}}"
+      method="post"
+      th:object="${cliente}">
+
+    <label>Nome:</label>
+    <input type="text" th:field="*{donoNome}" /><br>
+
+    <label>Telefone:</label>
+    <input type="text" th:field="*{telefone}" /><br>
+
+    <label>Endereço:</label>
+    <input type="text" th:field="*{endereco}" /><br>
+
+    <button type="submit">Salvar</button>
+</form>
+</body>
+</html>
+

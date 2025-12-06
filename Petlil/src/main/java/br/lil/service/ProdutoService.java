@@ -11,18 +11,38 @@ import br.ll.model.Produto;
 @Service
 public class ProdutoService {
 
-    @Autowired
-    private ProdutoDao produtoDao;
+    private List<Produto> produtos = new ArrayList<>();
+    private int autoIncrement = 1;
 
     public List<Produto> listarTodos() {
-        return produtoDao.findAll();
+        return produtos;
     }
 
-    public Produto salvar(Produto produto) {
-        return produtoDao.save(produto);
+    public Produto buscarPorId(int id) {
+        return produtos.stream()
+                .filter(p -> p.getIdProduto() == id)
+                .findFirst()
+                .orElse(null);
     }
 
-    public void deletar(Long id) {
-        produtoDao.deleteById(id);
+    public void salvar(Produto produto) {
+        produto.setIdProduto(autoIncrement++);
+        produtos.add(produto);
+    }
+
+    public void atualizar(Produto pAtualizado) {
+        Produto p = buscarPorId(pAtualizado.getIdProduto());
+
+        if (p != null) {
+            p.setNomeItem(pAtualizado.getnomeItem());
+            p.setPrecoItem(pAtualizado.getprecoItem());
+            p.setDescricao(pAtualizado.getDescricao());
+            p.setCliente(pAtualizado.getCliente());
+            p.setPetshop(pAtualizado.getPetshop());
+        }
+    }
+
+    public void excluir(int id) {
+        produtos.removeIf(p -> p.getIdProduto() == id);
     }
 }

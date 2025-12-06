@@ -11,18 +11,35 @@ import br.ll.model.Cliente;
 @Service
 public class ClienteService {
 
-    @Autowired
-    private ClienteDao clienteDao;
+    private List<Cliente> clientes = new ArrayList<>();
+    private int autoIncrement = 1;
 
     public List<Cliente> listarTodos() {
-        return clienteDao.findAll();
+        return clientes;
     }
 
-    public Cliente salvar(Cliente cliente) {
-        return clienteDao.save(cliente);
+    public Cliente buscarPorId(int id) {
+        return clientes.stream()
+                .filter(c -> c.getIdDonoAnimal() == id)
+                .findFirst()
+                .orElse(null);
     }
 
-    public void deletar(Long id) {
-        clienteDao.deleteById(id);
+    public void salvar(Cliente cliente) {
+        cliente.setIdDonoAnimal(autoIncrement++);
+        clientes.add(cliente);
+    }
+
+    public void atualizar(Cliente clienteAtualizado) {
+        Cliente cliente = buscarPorId(clienteAtualizado.getIdDonoAnimal());
+        if (cliente != null) {
+            cliente.setDonoNome(clienteAtualizado.getDonoNome());
+            cliente.setEndereco(clienteAtualizado.getEndereco());
+            cliente.setTelefone(clienteAtualizado.getTelefone());
+        }
+    }
+
+    public void excluir(int id) {
+        clientes.removeIf(c -> c.getIdDonoAnimal() == id);
     }
 }

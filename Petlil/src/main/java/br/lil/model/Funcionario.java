@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Funcionario {
+    private int id;
     private String nomeFuncionario;
     private String funcao;
     private double salario;
@@ -19,7 +20,9 @@ public class Funcionario {
         this.animaisAtendidos.add(animal);
     }
 
-    // Getters e Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    
     public String getNomeFuncionario() { return nomeFuncionario; }
     public void setNomeFuncionario(String nomeFuncionario) { this.nomeFuncionario = nomeFuncionario; }
     

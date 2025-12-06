@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Produto</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        p { font-size: 16px; margin: 5px 0; }
+        .btn { padding: 8px 15px; margin: 5px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        .btn:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+
+<h1>Detalhes do Produto</h1>
+
+<p><strong>ID:</strong> <span th:text="${produto.idProduto}"></span></p>
+<p><strong>Nome:</strong> <span th:text="${produto.nomeItem}"></span></p>
+<p><strong>Preço:</strong> R$ <span th:text="${produto.precoItem}"></span></p>
+<p><strong>Descrição:</strong> <span th:text="${produto.descricao}"></span></p>
+
+<p><strong>Cliente:</strong> 
+    <span th:text="${produto.cliente != null ? produto.cliente.donoNome : '—'}"></span>
+</p>
+<p><strong>Telefone do Cliente:</strong> 
+    <span th:text="${produto.cliente != null ? produto.cliente.telefone : '—'}"></span>
+</p>
+<p><strong>Endereço do Cliente:</strong> 
+    <span th:text="${produto.cliente != null ? produto.cliente.endereco : '—'}"></span>
+</p>
+
+<p><strong>Petshop:</strong> <span th:text="${produto.petshop != null ? produto.petshop.nomePetshop : '—'}"></span></p>
+
+<a href="/produtos"><button class="btn">Voltar</button></a>
+<a th:href="@{|/produtos/editar/${produto.idProduto}|}"><button class="btn">Editar</button></a>
+<a th:href="@{|/produtos/excluir/${produto.idProduto}|}"><button class="btn" style="background-color: #f44336;">Excluir</button></a>
+
+</body>
+</html>
