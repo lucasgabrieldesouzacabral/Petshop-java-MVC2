@@ -8,7 +8,7 @@
 
 <h1>Lista de Clientes</h1>
 
-<a href="/clientes/novo">Cadastrar Cliente</a>
+<a href="/clientes/novo"><button>Novo Cliente</button></a>
 
 <table border="1">
     <tr>
@@ -19,18 +19,25 @@
         <th>Ações</th>
     </tr>
 
-    <tr th:each="cliente : ${listaClientes}">
-        <td th:text="${cliente.idDonoAnimal}"></td>
-        <td th:text="${cliente.donoNome}"></td>
-        <td th:text="${cliente.telefone}"></td>
-        <td th:text="${cliente.endereco}"></td>
+    <tr th:each="c : ${listaClientes}">
+        <td th:text="${c.idDonoAnimal}"></td>
+        <td th:text="${c.donoNome}"></td>
+        <td th:text="${c.telefone}"></td>
+        <td th:text="${c.endereco}"></td>
 
-        <a th:href="@{|/clientes/editar/${cliente.idDonoAnimal}|}">
-            <button>Editar</button>
-        </a>
-        <a th:href="@{|/clientes/excluir/${cliente.idDonoAnimal}|}">
-            <button>Excluir</button>
-        </a>
+        <td>
+            <a th:href="@{|/clientes/detalhes/${c.idDonoAnimal}|}">
+                <button>Detalhes</button>
+            </a>
+
+            <a th:href="@{|/clientes/editar/${c.idDonoAnimal}|}">
+                <button>Editar</button>
+            </a>
+
+            <a th:href="@{|/clientes/excluir/${c.idDonoAnimal}|}">
+                <button>Excluir</button>
+            </a>
+        </td>
     </tr>
 </table>
 

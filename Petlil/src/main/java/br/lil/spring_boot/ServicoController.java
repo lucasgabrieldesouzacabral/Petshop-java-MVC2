@@ -3,9 +3,12 @@ package br.ll.spring_boot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
+import br.ll.model.Servico;
 import br.ll.service.ServicoService;
+import br.ll.service.AnimalService;
+import br.ll.service.FuncionarioService;
 
 @Controller
 @RequestMapping("/servicos")
@@ -20,7 +23,6 @@ public class ServicoController {
     @Autowired
     private FuncionarioService funcionarioService;
 
-
     @GetMapping
     public String listar(Model model) {
         model.addAttribute("listaServicos", servicoService.listarTodos());
@@ -29,7 +31,7 @@ public class ServicoController {
 
     @GetMapping("/novo")
     public String novo(Model model) {
-        model.addAttribute("servico", new Servico(0, "", 0.0, "", null, null));
+        model.addAttribute("servico", new Servico());
         model.addAttribute("animais", animalService.listarTodos());
         model.addAttribute("funcionarios", funcionarioService.listarTodos());
         return "servico-form";

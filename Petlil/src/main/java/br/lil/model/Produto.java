@@ -1,9 +1,16 @@
 package br.lil.model;
-
+import jakarta.persistence.*;
+@Entity
 public class Produto extends Item {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idProduto;
    private String descricao;
+   @ManyToOne
+   @JoinColumn(name = "cliente_id")
    private Cliente cliente;
+    @ManyToOne
+    @JoinColumn(name = "petshop_id")
    private Petshop petshop;
 
     public Produto(int idProduto, String nomeItem, double precoItem, String descricao, Cliente cliente, Petshop petshop) {

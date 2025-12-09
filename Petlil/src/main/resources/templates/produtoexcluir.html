@@ -3,34 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Excluir Produto</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h1 { color: #f44336; }
-        p { font-size: 16px; margin: 5px 0; }
-        .btn { padding: 8px 15px; margin: 5px; border: none; cursor: pointer; }
-        .btn-excluir { background-color: #f44336; color: white; }
-        .btn-cancel { background-color: #ccc; }
-        .btn-excluir:hover { background-color: #da190b; }
-        .btn-cancel:hover { background-color: #999; }
-    </style>
 </head>
 <body>
 
 <h1>Excluir Produto</h1>
 
-<p>Tem certeza que deseja excluir o produto "<strong th:text="${produto.nomeItem}"></strong>"?</p>
+<p>Tem certeza que deseja excluir "<strong th:text="${produto.nomeItem}"></strong>"?</p>
 
 <p><strong>ID:</strong> <span th:text="${produto.idProduto}"></span></p>
 <p><strong>Preço:</strong> R$ <span th:text="${produto.precoItem}"></span></p>
-<p><strong>Descrição:</strong> <span th:text="${produto.descricao}"></span></p>
-<p><strong>Cliente:</strong> <span th:text="${produto.cliente != null ? produto.cliente.donoNome : '—'}"></span></p>
-<p><strong>Petshop:</strong> <span th:text="${produto.petshop != null ? produto.petshop.nomePetshop : '—'}"></span></p>
+<p><strong>Cliente:</strong> 
+    <span th:text="${produto.cliente != null ? produto.cliente.donoNome : '—'}"></span>
+</p>
+<p><strong>Petshop:</strong> 
+    <span th:text="${produto.petshop != null ? produto.petshop.nomePetshop : '—'}"></span>
+</p>
 
 <form th:action="@{'/produtos/excluir/' + ${produto.idProduto}}" method="post">
-    <button type="submit" class="btn btn-excluir">Excluir</button>
+    <button type="submit">Excluir</button>
 </form>
 
-<a href="/produtos"><button class="btn btn-cancel">Cancelar</button></a>
+<a href="/produtos"><button>Cancelar</button></a>
 
 </body>
 </html>

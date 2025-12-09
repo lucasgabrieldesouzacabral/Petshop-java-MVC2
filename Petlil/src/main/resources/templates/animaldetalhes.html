@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Detalhes Animal</title></head>
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Animal</title>
+</head>
 <body>
 
 <h1>Detalhes do Animal</h1>
@@ -12,8 +15,13 @@
 <p><strong>Raça:</strong> <span th:text="${animal.racaAnimal}"></span></p>
 <p><strong>Peso:</strong> <span th:text="${animal.pesoAnimal}"></span></p>
 
-<p><strong>Dono:</strong> <span th:text="${animal.dono != null ? animal.dono.donoNome : 'Sem dono'}"></span></p>
-<p><strong>Funcionário Atendente:</strong> <span th:text="${animal.funcionarioatendido != null ? animal.funcionarioatendido.nome : 'N/A'}"></span></p>
+<p><strong>Dono:</strong>
+    <span th:text="${animal.dono != null ? animal.dono.nome : 'Sem dono'}"></span>
+</p>
+
+<p><strong>Funcionário Atendente:</strong>
+    <span th:text="${animal.funcionarioatendido != null ? animal.funcionarioatendido.nomeFuncionario : 'N/A'}"></span>
+</p>
 
 <br>
 <a href="/animais"><button>Voltar</button></a>

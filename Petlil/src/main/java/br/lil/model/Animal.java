@@ -1,13 +1,24 @@
 package br.lil.model;
+import jakarta.persistence.*;
+@Entity
 public class Animal {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAnimal;
     private String nomeAnimal;
     private int idadeAnimal;
     private String especieAnimal;
     private String racaAnimal;
-    private Cliente dono;
+    @ManyToOne
+    @JoinColumn(name = "dono_id")
+    private Cliente idDonoAnimal;
     private double pesoAnimal;
+    @ManyToOne
+    @JoinColumn(name = "funcionario_id")
     private Funcionario funcionarioatendido;
+
+    public Animal() {
+    }
 
     public Animal(int idAnimal, String nomeAnimal, int idadeAnimal, String especieAnimal, String racaAnimal, Cliente dono, double pesoAnimal, Funcionario funcionarioatendido) {
         this.idAnimal = idAnimal;
@@ -35,13 +46,13 @@ public class Animal {
     public String getRacaAnimal() { return racaAnimal; }
     public void setRacaAnimal(String racaAnimal) { this.racaAnimal = racaAnimal; }
     
-    public Cliente getDono() { return dono; }
-    public void setDono(Cliente dono) { this.dono = dono; }
+    public Cliente getIdDonoAnimal() { return idDonoAnimal; }
+    public void setIdDonoAnimal(Cliente idDonoAnimal) { this.idDonoAnimal = idDonoAnimal; }
     
     public double getPesoAnimal() { return pesoAnimal; }
     public void setPesoAnimal(double pesoAnimal) { this.pesoAnimal = pesoAnimal; }
     
-    public int getIdDono() { return dono != null ? dono.getIdDonoAnimal() : 0; }
+    public int getIdDonoAnimal() { return idDonoAnimal != null ? idDonoAnimal.getIdDonoAnimal() : 0; }
 
     public Funcionario getfuncionarioatendido() { return funcionarioatendido; }
     public void setfuncionarioatendido(Funcionario funcionarioatendido) { this.funcionarioatendido = funcionarioatendido; }

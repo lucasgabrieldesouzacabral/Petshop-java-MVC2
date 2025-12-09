@@ -1,7 +1,16 @@
 package br.lil.model;
+import jakarta.persistence.*;
+
+@Entity
 public class Petshop {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idPetshop;
     private String nome;
     private String endereco;
+
+    public Petshop() {
+    }
 
     public Petshop(String nome, String endereco) {
         this.nome = nome;

@@ -1,5 +1,9 @@
 package br.lil.model;
+import jakarta.persistence.*;
+@Entity
 public class TipoPagamento {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPagamento;
     private String nomePagamento;
 

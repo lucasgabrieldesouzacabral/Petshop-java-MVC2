@@ -1,8 +1,17 @@
 package br.lil.model;
+import jakarta.persistence.*;
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Item {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String nomeItem;
     private double precoItem;
 
+    public Item() {
+    }
+    
     public Item(String nomeItem, double precoItem) {
         this.nomeItem = nomeItem;
         this.precoItem = precoItem;

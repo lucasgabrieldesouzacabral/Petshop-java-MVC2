@@ -1,11 +1,20 @@
 package br.ll.spring_boot;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
+import br.ll.model.Funcionario;
+import br.ll.model.Animal;
 import br.ll.service.FuncionarioService;
+import br.ll.service.AnimalService;
 
 @Controller
 @RequestMapping("/funcionarios")
@@ -13,6 +22,7 @@ public class FuncionarioController {
 
     @Autowired
     private FuncionarioService funcionarioService;
+
     @Autowired
     private AnimalService animalService;
 
@@ -28,8 +38,8 @@ public class FuncionarioController {
         return "funcionario-form";
     }
 
-    @PostMapping
-    public String salvar(@ModelAttribute("funcionario") Funcionario funcionario) {
+    @PostMapping("/salvar")
+    public String salvar(@ModelAttribute Funcionario funcionario) {
         funcionarioService.salvar(funcionario);
         return "redirect:/funcionarios";
     }
@@ -40,8 +50,8 @@ public class FuncionarioController {
         return "funcionario-form";
     }
 
-    @PostMapping("/{id}")
-    public String atualizar(@PathVariable int id, @ModelAttribute("funcionario") Funcionario funcionario) {
+    @PostMapping("/atualizar/{id}")
+    public String atualizar(@PathVariable int id, @ModelAttribute Funcionario funcionario) {
         funcionario.setId(id);
         funcionarioService.atualizar(funcionario);
         return "redirect:/funcionarios";
@@ -49,13 +59,15 @@ public class FuncionarioController {
 
     @GetMapping("/detalhes/{id}")
     public String detalhes(@PathVariable int id, Model model) {
+
         Funcionario f = funcionarioService.buscarPorId(id);
         model.addAttribute("funcionario", f);
 
         List<Animal> atendidos = animalService.listarTodos()
-                .stream()
-                .filter(a -> a.getfuncionarioatendido() != null && a.getfuncionarioatendido().getId() == id)
-                .toList();
+            .stream()
+            .filter(a -> a.getFuncionarioAtendido() != null &&
+                         a.getFuncionarioAtendido().getId() == id)
+            .toList();
 
         model.addAttribute("animaisAtendidos", atendidos);
 

@@ -3,9 +3,12 @@ package br.ll.spring_boot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
+import br.ll.model.Animal;
 import br.ll.service.AnimalService;
+import br.ll.service.ClienteService;
+import br.ll.service.FuncionarioService;
 
 @Controller
 @RequestMapping("/animais")
@@ -18,7 +21,6 @@ public class AnimalController {
     @Autowired
     private FuncionarioService funcionarioService;
 
-    
     @GetMapping
     public String listar(Model model) {
         model.addAttribute("listaAnimais", animalService.listarTodos());
@@ -27,7 +29,7 @@ public class AnimalController {
 
     @GetMapping("/novo")
     public String novo(Model model) {
-        model.addAttribute("animal", new Animal(0, "", 0, "", "", null, 0.0, null));
+        model.addAttribute("animal", new Animal());
         model.addAttribute("listaClientes", clienteService.listarTodos());
         model.addAttribute("listaFuncionarios", funcionarioService.listarTodos());
         return "animal-form";
@@ -44,10 +46,10 @@ public class AnimalController {
         model.addAttribute("animal", animalService.buscarPorId(id));
         model.addAttribute("listaClientes", clienteService.listarTodos());
         model.addAttribute("listaFuncionarios", funcionarioService.listarTodos());
-        return "animal-form";
+        return "animal-form"; 
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/editar/{id}")
     public String atualizar(@PathVariable int id, @ModelAttribute("animal") Animal animal) {
         animal.setIdAnimal(id);
         animalService.atualizar(animal);

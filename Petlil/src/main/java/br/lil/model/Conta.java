@@ -1,11 +1,24 @@
 package br.lil.model;
+import jakarta.persistence.*;
+@Entity
 public class Conta {
-    private double pagamento;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCompra;
+    private double pagamento;
+    @ManyToOne
+    @JoinColumn(name = "funcionario_id")
     private Funcionario atendente;
+    @ManyToOne
+    @JoinColumn(name = "tipo_pagamento_id")
     private TipoPagamento tipoPagamento;
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
+    public Conta() {
+    }
+    
     public Conta(double pagamento, int idCompra, Funcionario atendente, TipoPagamento tipoPagamento, Cliente cliente) {
         this.pagamento = pagamento;
         this.idCompra = idCompra;

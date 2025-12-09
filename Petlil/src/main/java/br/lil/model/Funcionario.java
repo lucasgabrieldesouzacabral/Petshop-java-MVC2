@@ -1,13 +1,22 @@
 package br.lil.model;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
 public class Funcionario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nomeFuncionario;
     private String funcao;
     private double salario;
-    private List<Animal> animaisAtendidos;
+    @OneToMany(mappedBy = "funcionarioatendido", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Animal> animaisAtendidos = new ArrayList<>();
+    @OneToMany(mappedBy = "funcionario")
+    private List<Conta> contas = new ArrayList<>();
+
+    public Funcionario() {
+    }
 
     public Funcionario(String nomeFuncionario, String funcao, double salario) {
         this.nomeFuncionario = nomeFuncionario;

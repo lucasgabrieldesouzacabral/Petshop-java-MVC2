@@ -3,9 +3,12 @@ package br.ll.spring_boot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
+import br.ll.model.Produto;
 import br.ll.service.ProdutoService;
+import br.ll.service.ClienteService;
+import br.ll.service.PetshopService;
 
 @Controller
 @RequestMapping("/produtos")
@@ -20,7 +23,6 @@ public class ProdutoController {
     @Autowired
     private PetshopService petshopService;
 
-
     @GetMapping
     public String listar(Model model) {
         model.addAttribute("listaProdutos", produtoService.listarTodos());
@@ -29,7 +31,7 @@ public class ProdutoController {
 
     @GetMapping("/novo")
     public String novo(Model model) {
-        model.addAttribute("produto", new Produto(0, "", 0.0, "", null, null));
+        model.addAttribute("produto", new Produto());
         model.addAttribute("clientes", clienteService.listarTodos());
         model.addAttribute("petshops", petshopService.listarTodos());
         return "produto-form";

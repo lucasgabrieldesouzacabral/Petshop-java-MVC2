@@ -1,45 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Contas</title>
-    <style>
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid #ddd; padding: 8px; }
-        th { background-color: #f2f2f2; }
-        .btn { padding: 5px 10px; margin: 2px; cursor: pointer; }
-    </style>
-</head>
+<head><meta charset="UTF-8"><title>Contas</title></head>
 <body>
 
-<h1>Contas / Agendamentos</h1>
+<h1>Lista de Contas</h1>
 
-<a href="/contas/novo"><button class="btn">Nova Conta</button></a>
+<a href="/contas/novo"><button>Nova Conta</button></a>
 
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Cliente</th>
-            <th>Animal</th>
-            <th>Funcionário</th>
-            <th>Pagamento</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="c : ${contas}">
-            <td th:text="${c.idCompra}"></td>
-            <td th:text="${c.cliente.donoNome}"></td>
-            <td th:text="${c.cliente.animais.size() > 0 ? c.cliente.animais[0].nomeAnimal : '-'}"></td>
-            <td th:text="${c.atendente.nomeFuncionario}"></td>
-            <td th:text="${c.pagamento}"></td>
-            <td>
-                <a th:href="@{|/contas/detalhes/${c.idCompra}|}"><button class="btn">Detalhes</button></a>
-                <a th:href="@{|/contas/excluir/${c.idCompra}|}"><button class="btn" style="background-color:#f44336;color:white;">Excluir</button></a>
-            </td>
-        </tr>
-    </tbody>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Atendente</th>
+        <th>Valor</th>
+        <th>Tipo Pagamento</th>
+        <th>Ações</th>
+    </tr>
+
+    <tr th:each="c : ${listaContas}">
+        <td th:text="${c.idCompra}"></td>
+        <td th:text="${c.cliente != null ? c.cliente.donoNome : 'N/A'}"></td>
+        <td th:text="${c.atendente != null ? c.atendente.nomeFuncionario : 'N/A'}"></td>
+        <td th:text="'R$ ' + c.pagamento"></td>
+        <td th:text="${c.tipoPagamento != null ? c.tipoPagamento.tipo : 'N/A'}"></td>
+
+        <td>
+            <a th:href="@{|/contas/detalhes/${c.idCompra}|}"><button>Detalhes</button></a>
+            <a th:href="@{|/contas/editar/${c.idCompra}|}"><button>Editar</button></a>
+            <a th:href="@{|/contas/excluir/${c.idCompra}|}"><button>Excluir</button></a>
+        </td>
+    </tr>
 </table>
 
 </body>

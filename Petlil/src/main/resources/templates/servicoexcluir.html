@@ -6,12 +6,9 @@
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
         h1 { color: #f44336; }
-        p { font-size: 16px; margin: 5px 0; }
         .btn { padding: 8px 15px; margin: 5px; border: none; cursor: pointer; }
         .btn-excluir { background-color: #f44336; color: white; }
         .btn-cancel { background-color: #ccc; }
-        .btn-excluir:hover { background-color: #da190b; }
-        .btn-cancel:hover { background-color: #999; }
     </style>
 </head>
 <body>
@@ -25,7 +22,7 @@
 <p><strong>Horário:</strong> <span th:text="${servico.servicoHorario}"></span></p>
 
 <p><strong>Animal:</strong> <span th:text="${servico.animal != null ? servico.animal.nomeAnimal : '—'}"></span></p>
-<p><strong>Dono do Animal:</strong> <span th:text="${servico.animal != null && servico.animal.dono != null ? servico.animal.dono.donoNome : '—'}"></span></p>
+<p><strong>Dono:</strong> <span th:text="${servico.animal != null && servico.animal.dono != null ? servico.animal.dono.donoNome : '—'}"></span></p>
 
 <p><strong>Funcionário:</strong> <span th:text="${servico.funcionario != null ? servico.funcionario.nomeFuncionario : '—'}"></span></p>
 

@@ -1,10 +1,20 @@
 package br.lil.model;
+import jakarta.persistence.*;
+@Entity
 public class Servico extends Item{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idServico;
     private String servicoHorario;
+    @ManyToOne
+    @JoinColumn(name = "animal_id")
     private Animal animal;
+    @ManyToOne
+    @JoinColumn(name = "funcionario_id")
    private Funcionario funcionario;
 
+    public Servico() {
+    }
     public Servico(int idServico, String nomeItem, double precoItem, String servicoHorario, Animal animal, Funcionario funcionario) {
         super(nomeItem, precoItem);
         this.idServico = idServico;

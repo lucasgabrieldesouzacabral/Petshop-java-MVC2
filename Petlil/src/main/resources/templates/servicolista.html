@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Serviços</title>
+    <meta charset="UTF-8">
 </head>
 <body>
-    <h1>Serviços</h1>
-    <a href="/servicos/novo"><button>Novo Serviço</button></a>
+
+<h1>Serviços</h1>
+
+<a href="/servicos/novo"><button>Novo Serviço</button></a>
+
+<br><br>
 
 <table border="1">
     <tr>
@@ -33,7 +37,8 @@
             <a th:href="@{|/servicos/excluir/${s.idServico}|}"><button>Excluir</button></a>
         </td>
     </tr>
+
 </table>
-    
+
 </body>
 </html>

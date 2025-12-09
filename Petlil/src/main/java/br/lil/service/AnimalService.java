@@ -10,46 +10,38 @@ import br.ll.model.Animal;
 
 @Service
 public class AnimalService {
-
+    @Autowired
+    private AnimalDao animalDao;
     private List<Animal> animais = new ArrayList<>();
     private int autoIncrement = 1;
 
     public List<Animal> listarTodos() {
-        return animais;
+        return animalDao.findAll();
     }
 
     public Animal buscarPorId(int id) {
-        return animais.stream()
-                .filter(a -> a.getIdAnimal() == id)
-                .findFirst()
-                .orElse(null);
+        return animalDao.findById(id).orElse(null);
     }
 
     public void salvar(Animal animal) {
-        animal.setIdAnimal(autoIncrement++);
-        animais.add(animal);
-
-       
-        if (animal.getDono() != null) {
-            animal.getDono().adicionarAnimal(animal);
-        }
+       animalDao.save(animal);
     }
 
     public void atualizar(Animal atualizado) {
-        Animal a = buscarPorId(atualizado.getIdAnimal());
+        Animal existente = buscarPorId(atualizado.getIdAnimal());
 
-        if (a != null) {
-            a.setNomeAnimal(atualizado.getNomeAnimal());
-            a.setIdadeAnimal(atualizado.getIdadeAnimal());
-            a.setEspecieAnimal(atualizado.getEspecieAnimal());
-            a.setRacaAnimal(atualizado.getRacaAnimal());
-            a.setPesoAnimal(atualizado.getPesoAnimal());
-            a.setDono(atualizado.getDono());
-            a.setfuncionarioatendido(atualizado.getfuncionarioatendido());
+        if (existente != null) {
+            existente.setNomeAnimal(atualizado.getNomeAnimal());
+            existente.setIdadeAnimal(atualizado.getIdadeAnimal());
+            existente.setEspecieAnimal(atualizado.getEspecieAnimal());
+            existente.setRacaAnimal(atualizado.getRacaAnimal());
+            existente.setPesoAnimal(atualizado.getPesoAnimal());
+            existente.setDono(atualizado.getDono());
+            existente.setfuncionarioatendido(atualizado.getfuncionarioatendido());
         }
     }
 
     public void excluir(int id) {
-        animais.removeIf(a -> a.getIdAnimal() == id);
+        animaiDao.deleteById(id);
     }
 }

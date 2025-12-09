@@ -10,39 +10,38 @@ import br.ll.model.Servico;
 
 @Service
 public class ServicoService {
-
+    @Autowired
+    private ServicoDao servicoDao;
     private List<Servico> servicos = new ArrayList<>();
     private int autoIncrement = 1;
 
     public List<Servico> listarTodos() {
-        return servicos;
+        return servicoDao.findAll();
     }
 
     public Servico buscarPorId(int id) {
-        return servicos.stream()
-            .filter(s -> s.getIdServico() == id)
-            .findFirst()
-            .orElse(null);
+        return servicoDao.findById(id).orElse(null);
     }
 
     public void salvar(Servico servico) {
-        servico.setIdServico(autoIncrement++);
-        servicos.add(servico);
+        servicoDao.save(servico);
     }
 
     public void atualizar(Servico atualizado) {
-        Servico s = buscarPorId(atualizado.getIdServico());
+        Servico servico = buscarPorId(atualizado.getIdServico());
+    
+        if (servico != null) {
+            servico.setNomeItem(atualizado.getnomeItem());
+            servico.setPrecoItem(atualizado.getprecoItem());
+            servico.setServicoHorario(atualizado.getServicoHorario());
+            servico.setAnimal(atualizado.getAnimal());
+            servico.setFuncionario(atualizado.getFuncionario());
 
-        if (s != null) {
-            s.setNomeItem(atualizado.getnomeItem());
-            s.setPrecoItem(atualizado.getprecoItem());
-            s.setServicoHorario(atualizado.getServicoHorario());
-            s.setAnimal(atualizado.getAnimal());
-            s.setFuncionario(atualizado.getFuncionario());
+            servicoDao.save(servico);
         }
     }
 
     public void excluir(int id) {
-        servicos.removeIf(s -> s.getIdServico() == id);
+        servicoDao.deleteById(id);
     }
 }

@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Detalhes da Conta</title>
-</head>
+<head><meta charset="UTF-8"><title>Detalhes da Conta</title></head>
 <body>
 
 <h1>Detalhes da Conta</h1>
 
-<p><strong>ID:</strong> <span th:text="${conta.idCompra}"></span></p>
-<p><strong>Cliente:</strong> <span th:text="${conta.cliente.donoNome}"></span></p>
-<p><strong>Animal:</strong> <span th:text="${conta.cliente.animais.size() > 0 ? conta.cliente.animais[0].nomeAnimal : '-'}"></span></p>
-<p><strong>Funcionário:</strong> <span th:text="${conta.atendente.nomeFuncionario}"></span></p>
-<p><strong>Tipo de Pagamento:</strong> <span th:text="${conta.tipoPagamento.nomePagamento}"></span></p>
-<p><strong>Total:</strong> R$ <span th:text="${conta.pagamento}"></span></p>
+<p><strong>ID da Compra:</strong> <span th:text="${conta.idCompra}"></span></p>
+<p><strong>Valor:</strong> R$ <span th:text="${conta.pagamento}"></span></p>
 
+<p><strong>Cliente:</strong>
+    <span th:text="${conta.cliente != null ? conta.cliente.donoNome : 'N/A'}"></span>
+</p>
+
+<p><strong>Atendente:</strong>
+    <span th:text="${conta.atendente != null ? conta.atendente.nomeFuncionario : 'N/A'}"></span>
+</p>
+
+<p><strong>Tipo Pagamento:</strong>
+    <span th:text="${conta.tipoPagamento != null ? conta.tipoPagamento.tipo : 'N/A'}"></span>
+</p>
+
+<br>
 <a href="/contas"><button>Voltar</button></a>
-<a th:href="@{|/contas/excluir/${conta.idCompra}|}"><button style="background-color:#f44336;color:white;">Excluir</button></a>
 
 </body>
 </html>

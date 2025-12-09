@@ -3,13 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Detalhes do Produto</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h1 { color: #333; }
-        p { font-size: 16px; margin: 5px 0; }
-        .btn { padding: 8px 15px; margin: 5px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
-        .btn:hover { background-color: #45a049; }
-    </style>
 </head>
 <body>
 
@@ -23,18 +16,14 @@
 <p><strong>Cliente:</strong> 
     <span th:text="${produto.cliente != null ? produto.cliente.donoNome : '—'}"></span>
 </p>
-<p><strong>Telefone do Cliente:</strong> 
-    <span th:text="${produto.cliente != null ? produto.cliente.telefone : '—'}"></span>
-</p>
-<p><strong>Endereço do Cliente:</strong> 
-    <span th:text="${produto.cliente != null ? produto.cliente.endereco : '—'}"></span>
+
+<p><strong>Petshop:</strong> 
+    <span th:text="${produto.petshop != null ? produto.petshop.nomePetshop : '—'}"></span>
 </p>
 
-<p><strong>Petshop:</strong> <span th:text="${produto.petshop != null ? produto.petshop.nomePetshop : '—'}"></span></p>
-
-<a href="/produtos"><button class="btn">Voltar</button></a>
-<a th:href="@{|/produtos/editar/${produto.idProduto}|}"><button class="btn">Editar</button></a>
-<a th:href="@{|/produtos/excluir/${produto.idProduto}|}"><button class="btn" style="background-color: #f44336;">Excluir</button></a>
+<a href="/produtos"><button>Voltar</button></a>
+<a th:href="@{|/produtos/editar/${produto.idProduto}|}"><button>Editar</button></a>
+<a th:href="@{|/produtos/excluir/${produto.idProduto}|}"><button>Excluir</button></a>
 
 </body>
 </html>

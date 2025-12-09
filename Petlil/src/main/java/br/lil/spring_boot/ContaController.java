@@ -1,3 +1,28 @@
+package br.ll.spring_boot;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import br.ll.model.Conta;
+import br.ll.model.Produto;
+import br.ll.model.Servico;
+import br.ll.service.ContaService;
+import br.ll.service.ClienteService;
+import br.ll.service.AnimalService;
+import br.ll.service.FuncionarioService;
+import br.ll.service.ProdutoService;
+import br.ll.service.ServicoService;
+import br.ll.service.TipoPagamentoService;
+
 @Controller
 @RequestMapping("/contas")
 public class ContaController {
@@ -25,13 +50,15 @@ public class ContaController {
 
     @GetMapping("/novo")
     public String novaContaForm(Model model) {
-        model.addAttribute("conta", new Conta(0, 0, null, null, null));
+        model.addAttribute("conta", new Conta());
+
         model.addAttribute("clientes", clienteService.listarTodos());
         model.addAttribute("animais", animalService.listarTodos());
         model.addAttribute("funcionarios", funcionarioService.listarTodos());
         model.addAttribute("produtos", produtoService.listarTodos());
         model.addAttribute("servicos", servicoService.listarTodos());
         model.addAttribute("tiposPagamento", tipoPagamentoService.listarTodos());
+
         return "conta-form";
     }
 
@@ -45,7 +72,7 @@ public class ContaController {
         if (produtosSelecionados != null) {
             for (Integer id : produtosSelecionados) {
                 Produto p = produtoService.buscarPorId(id);
-                total += p.getprecoItem();
+                total += p.getPrecoItem();
             }
         }
 
@@ -58,17 +85,24 @@ public class ContaController {
 
         conta.setPagamento(total);
         contaService.salvar(conta);
+
         return "redirect:/contas";
     }
 
     @GetMapping("/detalhes/{id}")
-    public String detalhesConta(@PathVariable int id, Model model) {
+    public String detalhes(@PathVariable int id, Model model) {
         model.addAttribute("conta", contaService.buscarPorId(id));
         return "conta-detalhes";
     }
 
     @GetMapping("/excluir/{id}")
-    public String excluirConta(@PathVariable int id) {
+    public String excluirPagina(@PathVariable int id, Model model) {
+        model.addAttribute("conta", contaService.buscarPorId(id));
+        return "conta-excluir";
+    }
+
+    @PostMapping("/excluir/{id}")
+    public String excluir(@PathVariable int id) {
         contaService.excluir(id);
         return "redirect:/contas";
     }

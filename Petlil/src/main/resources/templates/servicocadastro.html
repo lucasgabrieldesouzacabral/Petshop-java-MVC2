@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Serviço</title>
+    <meta charset="UTF-8">
 </head>
 <body>
 
 <h1 th:text="${servico.idServico == 0 ? 'Novo Serviço' : 'Editar Serviço'}"></h1>
 
-<form th:action="${servico.idServico == 0 ? '/servicos' : '/servicos/' + ${servico.idServico}}"
+<form th:action="${servico.idServico == 0 ? '/servicos' : '/servicos/' + servico.idServico}"
       method="post" th:object="${servico}">
 
     <label>Nome:</label>

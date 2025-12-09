@@ -5,14 +5,14 @@
 
 <h1 th:text="${produto.idProduto == 0 ? 'Novo Produto' : 'Editar Produto'}"></h1>
 
-<form th:action="${produto.idProduto == 0 ? '/produtos' : '/produtos/' + ${produto.idProduto}}"
+<form th:action="@{${produto.idProduto == 0} ? '/produtos' : '/produtos/' + ${produto.idProduto}}"
       method="post" th:object="${produto}">
 
     <label>Nome:</label>
-    <input type="text" th:field="*{nomeItem}"><br><br>
+    <input type="text" th:field="*{nomeItem}" required><br><br>
 
     <label>Preço:</label>
-    <input type="number" step="0.01" th:field="*{precoItem}"><br><br>
+    <input type="number" step="0.01" th:field="*{precoItem}" required><br><br>
 
     <label>Descrição:</label>
     <input type="text" th:field="*{descricao}"><br><br>
@@ -20,13 +20,13 @@
     <label>Cliente:</label>
     <select th:field="*{cliente}">
         <option value="">Selecione...</option>
-        <option th:each="c : ${clientes}" th:value="${c}" th:text="${c.donoNome}"></option>
+        <option th:each="c : ${clientes}" th:value="${c.idCliente}" th:text="${c.donoNome}"></option>
     </select><br><br>
 
     <label>Petshop:</label>
     <select th:field="*{petshop}">
         <option value="">Selecione...</option>
-        <option th:each="p : ${petshops}" th:value="${p}" th:text="${p.nomePetshop}"></option>
+        <option th:each="p : ${petshops}" th:value="${p.idPetshop}" th:text="${p.nomePetshop}"></option>
     </select><br><br>
 
     <button type="submit">Salvar</button>
