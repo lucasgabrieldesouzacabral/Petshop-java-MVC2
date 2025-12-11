@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Cliente</title></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliente</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
+<div class="container">
 
 <h1 th:text="${cliente.idDonoAnimal == 0 ? 'Novo Cliente' : 'Editar Cliente'}"></h1>
 
-<form th:action="${cliente.idDonoAnimal == 0 ? '/clientes' : '/clientes/' + cliente.idDonoAnimal}"
+<form th:action="${cliente.idDonoAnimal == 0 ? '/clientes' : '/clientes/editar/' + cliente.idDonoAnimal}"
       method="post"
       th:object="${cliente}">
 
@@ -18,12 +24,12 @@
     <label>Endereço:</label>
     <input type="text" th:field="*{endereco}"><br><br>
 
-    <button type="submit">Salvar</button>
+    <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
 
-<br>
-<a href="/clientes"><button>Cancelar</button></a>
+<a href="/clientes"><button class="btn btn-secondary">Cancelar</button></a>
 
+</div>
 </body>
 </html>
 

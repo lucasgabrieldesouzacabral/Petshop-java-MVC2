@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Excluir Funcionário</title></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir Funcionário</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
+<div class="container">
 
 <h1>Excluir Funcionário</h1>
 
@@ -14,11 +20,11 @@
 </ul>
 
 <form th:action="@{'/funcionarios/excluir/' + ${funcionario.id}}" method="post">
-    <button type="submit">Confirmar Exclusão</button>
+    <button type="submit" class="btn btn-delete">Confirmar Exclusão</button>
 </form>
 
-<br>
-<a href="/funcionarios"><button>Cancelar</button></a>
+<a href="/funcionarios"><button class="btn btn-secondary">Cancelar</button></a>
 
+</div>
 </body>
 </html>

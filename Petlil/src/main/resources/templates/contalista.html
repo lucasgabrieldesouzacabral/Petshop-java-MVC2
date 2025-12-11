@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Contas</title></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contas</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
-
+<div class="container">
 <h1>Lista de Contas</h1>
 
 <a href="/contas/novo"><button>Nova Conta</button></a>
@@ -22,7 +27,7 @@
         <td th:text="${c.cliente != null ? c.cliente.donoNome : 'N/A'}"></td>
         <td th:text="${c.atendente != null ? c.atendente.nomeFuncionario : 'N/A'}"></td>
         <td th:text="'R$ ' + c.pagamento"></td>
-        <td th:text="${c.tipoPagamento != null ? c.tipoPagamento.tipo : 'N/A'}"></td>
+        <td th:text="${c.tipoPagamento != null ? c.tipoPagamento.nomePagamento : 'N/A'}"></td>
 
         <td>
             <a th:href="@{|/contas/detalhes/${c.idCompra}|}"><button>Detalhes</button></a>
@@ -31,6 +36,6 @@
         </td>
     </tr>
 </table>
-
+</div>
 </body>
 </html>

@@ -2,9 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Excluir Produto</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div class="container">
 
 <h1>Excluir Produto</h1>
 
@@ -16,14 +19,15 @@
     <span th:text="${produto.cliente != null ? produto.cliente.donoNome : '—'}"></span>
 </p>
 <p><strong>Petshop:</strong> 
-    <span th:text="${produto.petshop != null ? produto.petshop.nomePetshop : '—'}"></span>
+    <span th:text="${produto.petshop != null ? produto.petshop.nome : '—'}"></span>
 </p>
 
 <form th:action="@{'/produtos/excluir/' + ${produto.idProduto}}" method="post">
-    <button type="submit">Excluir</button>
+    <button type="submit" class="btn btn-delete">Excluir</button>
 </form>
 
-<a href="/produtos"><button>Cancelar</button></a>
+<a href="/produtos"><button class="btn btn-secondary">Cancelar</button></a>
 
+</div>
 </body>
 </html>

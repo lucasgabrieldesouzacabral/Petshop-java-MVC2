@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><title>Produto</title></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
+<div class="container">
 
 <h1 th:text="${produto.idProduto == 0 ? 'Novo Produto' : 'Editar Produto'}"></h1>
 
-<form th:action="@{${produto.idProduto == 0} ? '/produtos' : '/produtos/' + ${produto.idProduto}}"
+<form th:action="${produto.idProduto == 0 ? '/produtos' : '/produtos/editar/' + ${produto.idProduto}}"
       method="post" th:object="${produto}">
 
     <label>Nome:</label>
@@ -29,10 +35,11 @@
         <option th:each="p : ${petshops}" th:value="${p.idPetshop}" th:text="${p.nome}"></option>
     </select><br><br>
 
-    <button type="submit">Salvar</button>
+    <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
 
-<a href="/produtos"><button>Cancelar</button></a>
+<a href="/produtos"><button class="btn btn-secondary">Cancelar</button></a>
 
+</div>
 </body>
 </html>

@@ -2,9 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Excluir Animal</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div class="container">
 
 <h1>Excluir Animal</h1>
 
@@ -13,15 +16,15 @@
 <ul>
     <li><strong>ID:</strong> <span th:text="${animal.idAnimal}"></span></li>
     <li><strong>Nome:</strong> <span th:text="${animal.nomeAnimal}"></span></li>
-    <li><strong>Dono:</strong> <span th:text="${animal.dono != null ? animal.dono.nome : 'Sem dono'}"></span></li>
+    <li><strong>Dono:</strong> <span th:text="${animal.idDonoAnimal != null ? animal.idDonoAnimal.donoNome : 'Sem dono'}"></span></li>
 </ul>
 
 <form th:action="@{'/animais/excluir/' + ${animal.idAnimal}}" method="post">
-    <button type="submit">Confirmar Exclusão</button>
+    <button type="submit" class="btn btn-delete">Confirmar Exclusão</button>
 </form>
 
-<br>
-<a href="/animais"><button>Cancelar</button></a>
+<a href="/animais"><button class="btn btn-secondary">Cancelar</button></a>
 
+</div>
 </body>
 </html>

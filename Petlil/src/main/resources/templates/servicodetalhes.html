@@ -2,16 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes do Serviço</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h1 { color: #333; }
-        p { font-size: 16px; margin: 5px 0; }
-        .btn { padding: 8px 15px; margin: 5px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
-        .btn:hover { background-color: #45a049; }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div class="container">
 
 <h1>Detalhes do Serviço</h1>
 
@@ -46,9 +42,12 @@
     R$ <span th:text="${servico.funcionario != null ? servico.funcionario.salario : '—'}"></span>
 </p>
 
-<a href="/servicos"><button class="btn">Voltar</button></a>
-<a th:href="@{|/servicos/editar/${servico.idServico}|}"><button class="btn">Editar</button></a>
-<a th:href="@{|/servicos/excluir/${servico.idServico}|}"><button class="btn" style="background-color: #f44336;">Excluir</button></a>
+<div class="action-buttons">
+    <a href="/servicos"><button class="btn btn-secondary">Voltar</button></a>
+    <a th:href="@{|/servicos/editar/${servico.idServico}|}}"><button class="btn btn-edit">Editar</button></a>
+    <a th:href="@{|/servicos/excluir/${servico.idServico}|}}"><button class="btn btn-delete">Excluir</button></a>
+</div>
 
+</div>
 </body>
 </html>

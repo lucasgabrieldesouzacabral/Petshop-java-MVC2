@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Editar Cliente</title></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Cliente</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
+<div class="container">
 
 <h1>Editar Cliente</h1>
 
@@ -19,11 +25,11 @@
     <label>Endereço:</label>
     <input type="text" th:field="*{endereco}"><br><br>
 
-    <button type="submit">Salvar</button>
+    <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
 
-<br>
-<a href="/clientes"><button>Cancelar</button></a>
+<a href="/clientes"><button class="btn btn-secondary">Cancelar</button></a>
 
+</div>
 </body>
 </html>

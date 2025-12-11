@@ -2,9 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes do Animal</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div class="container">
 
 <h1>Detalhes do Animal</h1>
 
@@ -16,15 +19,15 @@
 <p><strong>Peso:</strong> <span th:text="${animal.pesoAnimal}"></span></p>
 
 <p><strong>Dono:</strong>
-    <span th:text="${animal.dono != null ? animal.dono.nome : 'Sem dono'}"></span>
+    <span th:text="${animal.idDonoAnimal != null ? animal.idDonoAnimal.donoNome : 'Sem dono'}"></span>
 </p>
 
 <p><strong>Funcionário Atendente:</strong>
     <span th:text="${animal.funcionarioatendido != null ? animal.funcionarioatendido.nomeFuncionario : 'N/A'}"></span>
 </p>
 
-<br>
-<a href="/animais"><button>Voltar</button></a>
+<a href="/animais"><button class="btn btn-secondary">Voltar</button></a>
 
+</div>
 </body>
 </html>

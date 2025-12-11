@@ -39,7 +39,7 @@ public class FuncionarioController {
         return "funcionariocadastro";
     }
 
-    @PostMapping("/salvar")
+    @PostMapping
     public String salvar(@ModelAttribute Funcionario funcionario) {
         funcionarioService.salvar(funcionario);
         return "redirect:/funcionarios";
@@ -51,7 +51,7 @@ public class FuncionarioController {
         return "funcionariocadastro";
     }
 
-    @PostMapping("/atualizar/{id}")
+    @PostMapping("/editar/{id}")
     public String atualizar(@PathVariable int id, @ModelAttribute Funcionario funcionario) {
         funcionario.setId(id);
         funcionarioService.atualizar(funcionario);

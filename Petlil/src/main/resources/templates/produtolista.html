@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><title>Produtos</title></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
-
+<div class="container">
 <h1>Lista de Produtos</h1>
 
-<a href="/produtos/novo"><button>Novo Produto</button></a>
+<a href="/produtos/novo"><button class="btn btn-primary">Novo Produto</button></a>
 
 <table border="1">
     <tr>
@@ -22,16 +27,17 @@
         <td th:text="${p.nomeItem}"></td>
         <td th:text="${p.precoItem}"></td>
         <td th:text="${p.cliente != null ? p.cliente.donoNome : '—'}"></td>
-        <td th:text="${p.petshop != null ? p.petshop.nomePetshop : '—'}"></td>
+        <td th:text="${p.petshop != null ? p.petshop.nome : '—'}"></td>
 
-        <td>
-            <a th:href="@{|/produtos/detalhes/${p.idProduto}|}"><button>Detalhes</button></a>
-            <a th:href="@{|/produtos/editar/${p.idProduto}|}"><button>Editar</button></a>
-            <a th:href="@{|/produtos/excluir/${p.idProduto}|}"><button>Excluir</button></a>
+        <td class="action-buttons">
+            <a th:href="@{|/produtos/detalhes/${p.idProduto}|}}"><button class="btn btn-info">Detalhes</button></a>
+            <a th:href="@{|/produtos/editar/${p.idProduto}|}}"><button class="btn btn-edit">Editar</button></a>
+            <a th:href="@{|/produtos/excluir/${p.idProduto}|}}"><button class="btn btn-delete">Excluir</button></a>
         </td>
     </tr>
 
 </table>
 
+</div>
 </body>
 </html>

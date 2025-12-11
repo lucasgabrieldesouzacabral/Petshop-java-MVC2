@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Funcionários</title></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionários</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
-
+<div class="container">
 <h1>Lista de Funcionários</h1>
 
-<a href="/funcionarios/novo"><button>Novo Funcionário</button></a>
+<a href="/funcionarios/novo"><button class="btn btn-primary">Novo Funcionário</button></a>
 
 <table border="1">
     <tr>
@@ -24,13 +29,14 @@
         <td th:text="${f.salario}"></td>
         <td th:text="${#lists.size(f.animaisAtendidos)}"></td>
 
-        <td>
-            <a th:href="@{|/funcionarios/detalhes/${f.id}|}"><button>Detalhes</button></a>
-            <a th:href="@{|/funcionarios/editar/${f.id}|}"><button>Editar</button></a>
-            <a th:href="@{|/funcionarios/excluir/${f.id}|}"><button>Excluir</button></a>
+        <td class="action-buttons">
+            <a th:href="@{|/funcionarios/detalhes/${f.id}|}"><button class="btn btn-info">Detalhes</button></a>
+            <a th:href="@{|/funcionarios/editar/${f.id}|}"><button class="btn btn-edit">Editar</button></a>
+            <a th:href="@{|/funcionarios/excluir/${f.id}|}"><button class="btn btn-delete">Excluir</button></a>
         </td>
     </tr>
 </table>
 
+</div>
 </body>
 </html>

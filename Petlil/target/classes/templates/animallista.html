@@ -2,10 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Animais</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-
+<div class="container">
 <h1>Lista de Animais</h1>
 
 <a href="/animais/novo"><button>Novo Animal</button></a>
@@ -26,7 +28,7 @@
         <td th:text="${animal.nomeAnimal}"></td>
         <td th:text="${animal.especieAnimal}"></td>
         <td th:text="${animal.racaAnimal}"></td>
-        <td th:text="${animal.dono != null ? animal.dono.nome : 'Sem dono'}"></td>
+        <td th:text="${animal.idDonoAnimal != null ? animal.idDonoAnimal.donoNome : 'Sem dono'}"></td>
         <td th:text="${animal.funcionarioatendido != null ? animal.funcionarioatendido.nomeFuncionario : 'N/A'}"></td>
 
         <td>
@@ -36,6 +38,6 @@
         </td>
     </tr>
 </table>
-
+</div>
 </body>
 </html>

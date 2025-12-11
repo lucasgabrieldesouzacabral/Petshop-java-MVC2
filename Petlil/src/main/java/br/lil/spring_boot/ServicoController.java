@@ -55,7 +55,7 @@ public class ServicoController {
         return "servicocadastro";
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/editar/{id}")
     public String atualizar(@PathVariable int id, @ModelAttribute Servico servico) {
         servico.setIdServico(id);
         servicoService.atualizar(servico);

@@ -2,13 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conta</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div class="container">
 
 <h1 th:text="${conta.idCompra == 0 ? 'Nova Conta' : 'Editar Conta'}"></h1>
 
-<form th:action="${conta.idCompra == 0 ? '/contas' : '/contas/' + ${conta.idCompra}}"
+<form th:action="${conta.idCompra == 0 ? '/contas' : '/contas/editar/' + ${conta.idCompra}}"
       method="post" th:object="${conta}">
 
     <label>Valor da Conta:</label>
@@ -38,11 +41,11 @@
                 th:text="${t.nomePagamento}"></option>
     </select><br><br>
 
-    <button type="submit">Salvar</button>
+    <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
 
-<br>
-<a href="/contas"><button>Cancelar</button></a>
+<a href="/contas"><button class="btn btn-secondary">Cancelar</button></a>
 
+</div>
 </body>
 </html>

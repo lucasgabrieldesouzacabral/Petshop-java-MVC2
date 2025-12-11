@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Serviço</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviço</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div class="container">
 
 <h1 th:text="${servico.idServico == 0 ? 'Novo Serviço' : 'Editar Serviço'}"></h1>
 
-<form th:action="${servico.idServico == 0 ? '/servicos' : '/servicos/' + servico.idServico}"
+<form th:action="${servico.idServico == 0 ? '/servicos' : '/servicos/editar/' + servico.idServico}"
       method="post" th:object="${servico}">
 
     <label>Nome:</label>
@@ -32,10 +35,11 @@
         <option th:each="f : ${funcionarios}" th:value="${f.id}" th:text="${f.nomeFuncionario}"></option>
     </select><br><br>
 
-    <button type="submit">Salvar</button>
+    <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
 
-<a href="/servicos"><button>Cancelar</button></a>
+<a href="/servicos"><button class="btn btn-secondary">Cancelar</button></a>
 
+</div>
 </body>
 </html>

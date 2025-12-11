@@ -51,7 +51,7 @@ public class ProdutoController {
         return "produtocadastro";
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/editar/{id}")
     public String atualizar(@PathVariable int id, @ModelAttribute Produto produto) {
         produto.setIdProduto(id);
         produtoService.atualizar(produto);

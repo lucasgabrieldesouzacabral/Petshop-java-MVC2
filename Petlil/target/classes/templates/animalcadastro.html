@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Animal</title></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
+<div class="container">
 
 <h1 th:text="${animal.idAnimal == 0 ? 'Novo Animal' : 'Editar Animal'}"></h1>
 
-<form th:action="${animal.idAnimal == 0 ? '/animais' : '/animais/' + ${animal.idAnimal}}" 
+<form th:action="${animal.idAnimal == 0 ? '/animais' : '/animais/editar/' + ${animal.idAnimal}}" 
       method="post" th:object="${animal}">
 
     <label>Nome:</label>
@@ -39,11 +45,11 @@
                 th:text="${f.nomeFuncionario}"></option>
     </select><br><br>
 
-    <button type="submit">Salvar</button>
+    <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
 
-<br>
-<a href="/animais"><button>Cancelar</button></a>
+<a href="/animais"><button class="btn btn-secondary">Cancelar</button></a>
 
+</div>
 </body>
 </html>

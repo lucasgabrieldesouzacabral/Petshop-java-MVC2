@@ -2,16 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Excluir Serviço</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h1 { color: #f44336; }
-        .btn { padding: 8px 15px; margin: 5px; border: none; cursor: pointer; }
-        .btn-excluir { background-color: #f44336; color: white; }
-        .btn-cancel { background-color: #ccc; }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div class="container">
 
 <h1>Excluir Serviço</h1>
 
@@ -27,10 +23,11 @@
 <p><strong>Funcionário:</strong> <span th:text="${servico.funcionario != null ? servico.funcionario.nomeFuncionario : '—'}"></span></p>
 
 <form th:action="@{'/servicos/excluir/' + ${servico.idServico}}" method="post">
-    <button type="submit" class="btn btn-excluir">Excluir</button>
+    <button type="submit" class="btn btn-delete">Excluir</button>
 </form>
 
-<a href="/servicos"><button class="btn btn-cancel">Cancelar</button></a>
+<a href="/servicos"><button class="btn btn-secondary">Cancelar</button></a>
 
+</div>
 </body>
 </html>

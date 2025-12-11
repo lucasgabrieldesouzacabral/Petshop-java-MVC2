@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Detalhes da Conta</title></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Conta</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
+<div class="container">
 
 <h1>Detalhes da Conta</h1>
 
@@ -17,11 +23,11 @@
 </p>
 
 <p><strong>Tipo Pagamento:</strong>
-    <span th:text="${conta.tipoPagamento != null ? conta.tipoPagamento.tipo : 'N/A'}"></span>
+    <span th:text="${conta.tipoPagamento != null ? conta.tipoPagamento.nomePagamento : 'N/A'}"></span>
 </p>
 
-<br>
-<a href="/contas"><button>Voltar</button></a>
+<a href="/contas"><button class="btn btn-secondary">Voltar</button></a>
 
+</div>
 </body>
 </html>

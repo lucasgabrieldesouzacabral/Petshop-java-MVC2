@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>Funcionário</title></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionário</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
+<div class="container">
 
 <h1 th:text="${funcionario.id == 0 ? 'Novo Funcionário' : 'Editar Funcionário'}"></h1>
 
-<form th:action="${funcionario.id == 0 ? '/funcionarios' : '/funcionarios/' + ${funcionario.id}}"
+<form th:action="${funcionario.id == 0 ? '/funcionarios' : '/funcionarios/editar/' + ${funcionario.id}}"
       method="post" th:object="${funcionario}">
 
     <label>Nome:</label>
@@ -17,11 +23,11 @@
     <label>Salário:</label>
     <input type="number" step="0.01" th:field="*{salario}"><br><br>
 
-    <button type="submit">Salvar</button>
+    <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
 
-<br>
-<a href="/funcionarios"><button>Cancelar</button></a>
+<a href="/funcionarios"><button class="btn btn-secondary">Cancelar</button></a>
 
+</div>
 </body>
 </html>

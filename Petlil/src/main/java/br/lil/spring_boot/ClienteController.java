@@ -10,16 +10,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.lil.model.Cliente;
+import br.lil.model.Animal;
 import br.lil.service.ClienteService;
+import br.lil.service.AnimalService;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/clientes")
 public class ClienteController {
 
     private final ClienteService clienteService;
+    private final AnimalService animalService;
 
-    public ClienteController(ClienteService clienteService) {
+    public ClienteController(ClienteService clienteService, AnimalService animalService) {
         this.clienteService = clienteService;
+        this.animalService = animalService;
     }
 
     @GetMapping
@@ -44,6 +50,20 @@ public class ClienteController {
     public String editar(@PathVariable int id, Model model) {
         model.addAttribute("cliente", clienteService.buscarPorId(id));
         return "clientecadastro";
+    }
+
+    @GetMapping("/detalhes/{id}")
+    public String detalhes(@PathVariable int id, Model model) {
+        Cliente cliente = clienteService.buscarPorId(id);
+        model.addAttribute("cliente", cliente);
+        
+        List<Animal> animaisDoCliente = animalService.listarTodos()
+            .stream()
+            .filter(a -> a.getidDonoAnimal() != null && a.getidDonoAnimal().getIdDonoAnimal() == id)
+            .collect(Collectors.toList());
+        
+        model.addAttribute("animaisDoCliente", animaisDoCliente);
+        return "clientedetalhes";
     }
 
     @PostMapping("/editar/{id}")
