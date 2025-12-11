@@ -2,18 +2,20 @@ package br.lil.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
+import org.springframework.lang.NonNull;
+import java.util.Objects;
+    
 import br.lil.dao.FuncionarioDao;
 import br.lil.model.Funcionario;
 
 @Service
 public class FuncionarioService {
-    @Autowired
-    private FuncionarioDao funcionarioDao;
-    private List<Funcionario> funcionarios = new ArrayList<>();
-    private int autoIncrement = 1;
+    private final FuncionarioDao funcionarioDao;
+
+    public FuncionarioService(FuncionarioDao funcionarioDao) {
+        this.funcionarioDao = funcionarioDao;
+    }
 
     public List<Funcionario> listarTodos() {
         return funcionarioDao.findAll();
@@ -23,12 +25,13 @@ public class FuncionarioService {
         return funcionarioDao.findById(id).orElse(null);
     }
 
-    public void salvar(Funcionario funcionario) {
+    public void salvar(@NonNull Funcionario funcionario) {
+        Objects.requireNonNull(funcionario);
         funcionarioDao.save(funcionario);
     }
 
     public void atualizar(Funcionario atualizado) {
-        Funcionario funcionario = findById(atualizado.getId());
+        Funcionario funcionario = buscarPorId(atualizado.getId());
 
         if (funcionario != null) {
             funcionario.setNomeFuncionario(atualizado.getNomeFuncionario());

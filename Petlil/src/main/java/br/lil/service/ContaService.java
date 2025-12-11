@@ -1,7 +1,8 @@
 package br.lil.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.lang.NonNull;
+import java.util.Objects;
 
 import br.lil.dao.ContaDao;
 import br.lil.model.Conta;
@@ -11,8 +12,11 @@ import java.util.List;
 @Service
 public class ContaService {
 
-    @Autowired
-    private ContaDao contaDao;
+    private final ContaDao contaDao;
+    public ContaService(ContaDao contaDao) {
+        this.contaDao = contaDao;
+    }
+
     public List<Conta> listarTodas() {
         return contaDao.findAll();
     }
@@ -21,7 +25,8 @@ public class ContaService {
         return contaDao.findById(id).orElse(null);
     }
 
-    public void salvar(Conta conta) {
+    public void salvar(@NonNull Conta conta) {
+        Objects.requireNonNull(conta);
         contaDao.save(conta);
     }
 

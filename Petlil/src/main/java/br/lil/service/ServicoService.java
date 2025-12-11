@@ -2,18 +2,20 @@ package br.lil.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.lang.NonNull;
+import java.util.Objects;
 
 import br.lil.dao.ServicoDao;
 import br.lil.model.Servico;
 
 @Service
 public class ServicoService {
-    @Autowired
-    private ServicoDao servicoDao;
-    private List<Servico> servicos = new ArrayList<>();
-    private int autoIncrement = 1;
+    private final ServicoDao servicoDao;
+
+    public ServicoService(ServicoDao servicoDao) {
+        this.servicoDao = servicoDao;
+    }
 
     public List<Servico> listarTodos() {
         return servicoDao.findAll();
@@ -23,7 +25,8 @@ public class ServicoService {
         return servicoDao.findById(id).orElse(null);
     }
 
-    public void salvar(Servico servico) {
+    public void salvar(@NonNull Servico servico) {
+        Objects.requireNonNull(servico);
         servicoDao.save(servico);
     }
 
@@ -31,8 +34,8 @@ public class ServicoService {
         Servico servico = buscarPorId(atualizado.getIdServico());
     
         if (servico != null) {
-            servico.setNomeItem(atualizado.getnomeItem());
-            servico.setPrecoItem(atualizado.getprecoItem());
+            servico.setNomeItem(atualizado.getNomeItem());
+            servico.setPrecoItem(atualizado.getPrecoItem());
             servico.setServicoHorario(atualizado.getServicoHorario());
             servico.setAnimal(atualizado.getAnimal());
             servico.setFuncionario(atualizado.getFuncionario());

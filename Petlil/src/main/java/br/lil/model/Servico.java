@@ -16,7 +16,7 @@ public class Servico extends Item{
     private Animal animal;
     @ManyToOne
     @JoinColumn(name = "funcionario_id")
-   private Funcionario funcionario;
+    private Funcionario funcionario;
 
     public Servico() {
     }
@@ -28,7 +28,7 @@ public class Servico extends Item{
         this.funcionario = funcionario;
     
     }
-   
+
     public int getIdServico() { return idServico; }
     public void setIdServico(int idServico) { this.idServico = idServico; }
 
@@ -43,6 +43,6 @@ public class Servico extends Item{
 
     @Override
     public String descricaoCompleta() {
-        return "Serviço: " + getnomeItem() + " - Horário: " + servicoHorario + " - R$" + getprecoItem();
+        return "Serviço: " + getNomeItem() + " - Horário: " + servicoHorario + " - R$" + getPrecoItem();
     }
 }

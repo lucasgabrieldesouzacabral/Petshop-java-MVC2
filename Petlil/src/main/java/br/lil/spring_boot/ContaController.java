@@ -2,7 +2,6 @@ package br.lil.spring_boot;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,25 +26,34 @@ import br.lil.service.TipoPagamentoService;
 @RequestMapping("/contas")
 public class ContaController {
 
-    @Autowired
-    private ContaService contaService;
-    @Autowired
-    private ClienteService clienteService;
-    @Autowired
-    private AnimalService animalService;
-    @Autowired
-    private FuncionarioService funcionarioService;
-    @Autowired
-    private ProdutoService produtoService;
-    @Autowired
-    private ServicoService servicoService;
-    @Autowired
-    private TipoPagamentoService tipoPagamentoService;
+    private final ContaService contaService;
+    private final ClienteService clienteService;
+    private final AnimalService animalService;
+    private final FuncionarioService funcionarioService;
+    private final ProdutoService produtoService;
+    private final ServicoService servicoService;
+    private final TipoPagamentoService tipoPagamentoService;
+
+    public ContaController(ContaService contaService,
+                        ClienteService clienteService,
+                        AnimalService animalService,
+                        FuncionarioService funcionarioService,
+                        ProdutoService produtoService,
+                        ServicoService servicoService,
+                        TipoPagamentoService tipoPagamentoService) {
+        this.contaService = contaService;
+        this.clienteService = clienteService;
+        this.animalService = animalService;
+        this.funcionarioService = funcionarioService;
+        this.produtoService = produtoService;
+        this.servicoService = servicoService;
+        this.tipoPagamentoService = tipoPagamentoService;
+    }
 
     @GetMapping
     public String listarContas(Model model) {
         model.addAttribute("contas", contaService.listarTodas());
-        return "conta-lista";
+        return "contalista";
     }
 
     @GetMapping("/novo")
@@ -59,13 +67,13 @@ public class ContaController {
         model.addAttribute("servicos", servicoService.listarTodos());
         model.addAttribute("tiposPagamento", tipoPagamentoService.listarTodos());
 
-        return "conta-form";
+        return "contacadastro";
     }
 
     @PostMapping("/salvar")
     public String salvarConta(@ModelAttribute Conta conta,
-                              @RequestParam(required = false) List<Integer> produtosSelecionados,
-                              @RequestParam(required = false) List<Integer> servicosSelecionados) {
+                            @RequestParam(required = false) List<Integer> produtosSelecionados,
+                            @RequestParam(required = false) List<Integer> servicosSelecionados) {
 
         double total = 0;
 
@@ -92,13 +100,13 @@ public class ContaController {
     @GetMapping("/detalhes/{id}")
     public String detalhes(@PathVariable int id, Model model) {
         model.addAttribute("conta", contaService.buscarPorId(id));
-        return "conta-detalhes";
+        return "contadetalhes";
     }
 
     @GetMapping("/excluir/{id}")
     public String excluirPagina(@PathVariable int id, Model model) {
         model.addAttribute("conta", contaService.buscarPorId(id));
-        return "conta-excluir";
+        return "contaexcluir";
     }
 
     @PostMapping("/excluir/{id}")

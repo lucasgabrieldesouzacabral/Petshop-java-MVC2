@@ -17,25 +17,25 @@
     <label>Cliente:</label>
     <select th:field="*{cliente}">
         <option value="">Selecione...</option>
-        <option th:each="c : ${listaClientes}"
-                th:value="${c}"
+        <option th:each="c : ${clientes}"
+                th:value="${c.idDonoAnimal}"
                 th:text="${c.donoNome}"></option>
     </select><br><br>
 
     <label>Funcionário Atendente:</label>
     <select th:field="*{atendente}">
         <option value="">Selecione...</option>
-        <option th:each="f : ${listaFuncionarios}"
-                th:value="${f}"
+        <option th:each="f : ${funcionarios}"
+                th:value="${f.id}"
                 th:text="${f.nomeFuncionario}"></option>
     </select><br><br>
 
     <label>Tipo de Pagamento:</label>
     <select th:field="*{tipoPagamento}">
         <option value="">Selecione...</option>
-        <option th:each="t : ${listaTipos}"
-                th:value="${t}"
-                th:text="${t.tipo}"></option>
+        <option th:each="t : ${tiposPagamento}"
+                th:value="${t.idPagamento}"
+                th:text="${t.nomePagamento}"></option>
     </select><br><br>
 
     <button type="submit">Salvar</button>

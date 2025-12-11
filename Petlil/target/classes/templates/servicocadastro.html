@@ -23,13 +23,13 @@
     <label>Animal:</label>
     <select th:field="*{animal}">
         <option value="">Selecione...</option>
-        <option th:each="a : ${animais}" th:value="${a}" th:text="${a.nomeAnimal}"></option>
+        <option th:each="a : ${animais}" th:value="${a.idAnimal}" th:text="${a.nomeAnimal}"></option>
     </select><br><br>
 
     <label>Funcionário:</label>
     <select th:field="*{funcionario}">
         <option value="">Selecione...</option>
-        <option th:each="f : ${funcionarios}" th:value="${f}" th:text="${f.nomeFuncionario}"></option>
+        <option th:each="f : ${funcionarios}" th:value="${f.id}" th:text="${f.nomeFuncionario}"></option>
     </select><br><br>
 
     <button type="submit">Salvar</button>

@@ -10,7 +10,7 @@ public class Cliente {
     private String donoNome; 
     private String telefone;
     private String endereco;
-    @OneToMany(mappedBy = "dono", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "idDonoAnimal", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Animal> animais = new ArrayList<>();
 
     public Cliente() {

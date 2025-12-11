@@ -1,6 +1,5 @@
 package br.lil.spring_boot;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,19 +13,20 @@ import br.lil.service.PetshopService;
 @RequestMapping("/produtos")
 public class ProdutoController {
 
-    @Autowired
-    private ProdutoService produtoService;
+    private final ProdutoService produtoService;
+    private final ClienteService clienteService;
+    private final PetshopService petshopService;
 
-    @Autowired
-    private ClienteService clienteService;
-
-    @Autowired
-    private PetshopService petshopService;
+    public ProdutoController(ProdutoService produtoService, ClienteService clienteService, PetshopService petshopService) {
+        this.produtoService = produtoService;
+        this.clienteService = clienteService;
+        this.petshopService = petshopService;
+    }
 
     @GetMapping
     public String listar(Model model) {
         model.addAttribute("listaProdutos", produtoService.listarTodos());
-        return "produto-lista";
+        return "produtolista";
     }
 
     @GetMapping("/novo")
@@ -34,7 +34,7 @@ public class ProdutoController {
         model.addAttribute("produto", new Produto());
         model.addAttribute("clientes", clienteService.listarTodos());
         model.addAttribute("petshops", petshopService.listarTodos());
-        return "produto-form";
+        return "produtocadastro";
     }
 
     @PostMapping
@@ -48,7 +48,7 @@ public class ProdutoController {
         model.addAttribute("produto", produtoService.buscarPorId(id));
         model.addAttribute("clientes", clienteService.listarTodos());
         model.addAttribute("petshops", petshopService.listarTodos());
-        return "produto-form";
+        return "produtocadastro";
     }
 
     @PostMapping("/{id}")
@@ -61,13 +61,13 @@ public class ProdutoController {
     @GetMapping("/detalhes/{id}")
     public String detalhes(@PathVariable int id, Model model) {
         model.addAttribute("produto", produtoService.buscarPorId(id));
-        return "produto-detalhes";
+        return "produtodetalhes";
     }
 
     @GetMapping("/excluir/{id}")
     public String excluirPagina(@PathVariable int id, Model model) {
         model.addAttribute("produto", produtoService.buscarPorId(id));
-        return "produto-excluir";
+        return "produtoexcluir";
     }
 
     @PostMapping("/excluir/{id}")

@@ -1,6 +1,5 @@
 package br.lil.spring_boot;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,19 +17,20 @@ import br.lil.service.ServicoService;
 @RequestMapping("/servicos")
 public class ServicoController {
 
-    @Autowired
-    private ServicoService servicoService;
+    private final ServicoService servicoService;
+    private final AnimalService animalService;
+    private final FuncionarioService funcionarioService;
 
-    @Autowired
-    private AnimalService animalService;
-
-    @Autowired
-    private FuncionarioService funcionarioService;
+    public ServicoController(ServicoService servicoService, AnimalService animalService, FuncionarioService funcionarioService) {
+        this.servicoService = servicoService;
+        this.animalService = animalService;
+        this.funcionarioService = funcionarioService;
+    }
 
     @GetMapping
     public String listar(Model model) {
         model.addAttribute("listaServicos", servicoService.listarTodos());
-        return "servico-lista";
+        return "servicolista";
     }
 
     @GetMapping("/novo")
@@ -38,7 +38,7 @@ public class ServicoController {
         model.addAttribute("servico", new Servico());
         model.addAttribute("animais", animalService.listarTodos());
         model.addAttribute("funcionarios", funcionarioService.listarTodos());
-        return "servico-form";
+        return "servicocadastro";
     }
 
     @PostMapping
@@ -52,7 +52,7 @@ public class ServicoController {
         model.addAttribute("servico", servicoService.buscarPorId(id));
         model.addAttribute("animais", animalService.listarTodos());
         model.addAttribute("funcionarios", funcionarioService.listarTodos());
-        return "servico-form";
+        return "servicocadastro";
     }
 
     @PostMapping("/{id}")
@@ -65,13 +65,13 @@ public class ServicoController {
     @GetMapping("/detalhes/{id}")
     public String detalhes(@PathVariable int id, Model model) {
         model.addAttribute("servico", servicoService.buscarPorId(id));
-        return "servico-detalhes";
+        return "servicodetalhes";
     }
 
     @GetMapping("/excluir/{id}")
     public String excluirPagina(@PathVariable int id, Model model) {
         model.addAttribute("servico", servicoService.buscarPorId(id));
-        return "servico-excluir";
+        return "servicoexcluir";
     }
 
     @PostMapping("/excluir/{id}")

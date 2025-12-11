@@ -24,10 +24,10 @@
     <input type="number" step="0.01" th:field="*{pesoAnimal}"><br><br>
 
     <label>Dono:</label>
-    <select th:field="*{dono}">
+    <select th:field="*{idDonoAnimal}">
         <option value="">Selecione...</option>
         <option th:each="c : ${listaClientes}"
-                th:value="${c}"
+                th:value="${c.idDonoAnimal}"
                 th:text="${c.donoNome}"></option>
     </select><br><br>
 
@@ -35,8 +35,8 @@
     <select th:field="*{funcionarioatendido}">
         <option value="">Selecione...</option>
         <option th:each="f : ${listaFuncionarios}"
-                th:value="${f}"
-                th:text="${f.nome}"></option>
+                th:value="${f.id}"
+                th:text="${f.nomeFuncionario}"></option>
     </select><br><br>
 
     <button type="submit">Salvar</button>

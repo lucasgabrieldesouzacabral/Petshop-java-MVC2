@@ -18,7 +18,7 @@ public class Funcionario {
     private double salario;
     @OneToMany(mappedBy = "funcionarioatendido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Animal> animaisAtendidos = new ArrayList<>();
-    @OneToMany(mappedBy = "funcionario")
+    @OneToMany(mappedBy = "atendente")
     private List<Conta> contas = new ArrayList<>();
 
     public Funcionario() {

@@ -1,19 +1,21 @@
-package br.ll.service;
+package br.lil.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.lang.NonNull;
+import java.util.Objects;
 
 import br.lil.dao.ProdutoDao;
 import br.lil.model.Produto;
 
 @Service
 public class ProdutoService {
-    @Autowired
-    private ProdutoDao produtoDao;
-    private List<Produto> produtos = new ArrayList<>();
-    private int autoIncrement = 1;
+    private final ProdutoDao produtoDao;
+
+    public ProdutoService(ProdutoDao produtoDao) {
+        this.produtoDao = produtoDao;
+    }
 
     public List<Produto> listarTodos() {
         return produtoDao.findAll();
@@ -23,7 +25,8 @@ public class ProdutoService {
         return produtoDao.findById(id).orElse(null);
     }
 
-    public void salvar(Produto produto) {
+    public void salvar(@NonNull Produto produto) {
+        Objects.requireNonNull(produto);
         produtoDao.save(produto);
     }
 
@@ -31,8 +34,8 @@ public class ProdutoService {
         Produto produto = buscarPorId(pAtualizado.getIdProduto());
     
         if (produto != null) {
-            produto.setNomeItem(pAtualizado.getnomeItem());
-            produto.setPrecoItem(pAtualizado.getprecoItem());
+            produto.setNomeItem(pAtualizado.getNomeItem());
+            produto.setPrecoItem(pAtualizado.getPrecoItem());
             produto.setDescricao(pAtualizado.getDescricao());
             produto.setCliente(pAtualizado.getCliente());
             produto.setPetshop(pAtualizado.getPetshop());

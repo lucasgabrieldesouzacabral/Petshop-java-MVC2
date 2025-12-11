@@ -2,7 +2,6 @@ package br.lil.spring_boot;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,22 +19,24 @@ import br.lil.service.AnimalService;
 @RequestMapping("/funcionarios")
 public class FuncionarioController {
 
-    @Autowired
-    private FuncionarioService funcionarioService;
+    private final FuncionarioService funcionarioService;
+    private final AnimalService animalService;
 
-    @Autowired
-    private AnimalService animalService;
+    public FuncionarioController(FuncionarioService funcionarioService, AnimalService animalService) {
+        this.funcionarioService = funcionarioService;
+        this.animalService = animalService;
+    }
 
     @GetMapping
     public String listar(Model model) {
         model.addAttribute("listaFuncionarios", funcionarioService.listarTodos());
-        return "funcionario-lista";
+        return "funcionariolista";
     }
 
     @GetMapping("/novo")
     public String novo(Model model) {
         model.addAttribute("funcionario", new Funcionario());
-        return "funcionario-form";
+        return "funcionariocadastro";
     }
 
     @PostMapping("/salvar")
@@ -47,7 +48,7 @@ public class FuncionarioController {
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable int id, Model model) {
         model.addAttribute("funcionario", funcionarioService.buscarPorId(id));
-        return "funcionario-form";
+        return "funcionariocadastro";
     }
 
     @PostMapping("/atualizar/{id}")
@@ -65,19 +66,19 @@ public class FuncionarioController {
 
         List<Animal> atendidos = animalService.listarTodos()
             .stream()
-            .filter(a -> a.getFuncionarioAtendido() != null &&
-                         a.getFuncionarioAtendido().getId() == id)
-            .toList();
+            .filter(a -> a.getfuncionarioatendido() != null &&
+                a.getfuncionarioatendido().getId() == id)
+            .collect(java.util.stream.Collectors.toList());
 
         model.addAttribute("animaisAtendidos", atendidos);
 
-        return "funcionario-detalhes";
+        return "funcionariodetalhes";
     }
 
     @GetMapping("/excluir/{id}")
     public String excluirPagina(@PathVariable int id, Model model) {
         model.addAttribute("funcionario", funcionarioService.buscarPorId(id));
-        return "funcionario-excluir";
+        return "funcionarioexcluir";
     }
 
     @PostMapping("/excluir/{id}")

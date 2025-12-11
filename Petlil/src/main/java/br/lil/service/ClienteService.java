@@ -2,18 +2,19 @@ package br.lil.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
+import org.springframework.lang.NonNull;
+import java.util.Objects;
 import br.lil.dao.ClienteDao;
 import br.lil.model.Cliente;
 
 @Service
 public class ClienteService {
-    @Autowired
-    private ClienteDao clienteDao;
-    private List<Cliente> clientes = new ArrayList<>();
-    private int autoIncrement = 1;
+    private final ClienteDao clienteDao;
+
+    public ClienteService(ClienteDao clienteDao) {
+        this.clienteDao = clienteDao;
+    }
 
     public List<Cliente> listarTodos() {
         return clienteDao.findAll();
@@ -23,12 +24,13 @@ public class ClienteService {
         return clienteDao.findById(id).orElse(null);
     }
 
-    public void salvar(Cliente cliente) {
+    public void salvar(@NonNull Cliente cliente) {
+        Objects.requireNonNull(cliente);
         clienteDao.save(cliente);
     }
 
     public void atualizar(Cliente clienteAtualizado) {
-        Cliente cliente = findById(clienteAtualizado.getIdDonoAnimal());
+        Cliente cliente = buscarPorId(clienteAtualizado.getIdDonoAnimal());
         if (cliente != null) {
             cliente.setDonoNome(clienteAtualizado.getDonoNome());
             cliente.setEndereco(clienteAtualizado.getEndereco());

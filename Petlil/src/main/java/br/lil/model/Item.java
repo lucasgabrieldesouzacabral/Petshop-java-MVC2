@@ -1,11 +1,8 @@
 package br.lil.model;
-import jakarta.persistence.*;
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+import jakarta.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class Item {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
     private String nomeItem;
     private double precoItem;
 
@@ -17,14 +14,13 @@ public class Item {
         this.precoItem = precoItem;
     }
 
-    public String getnomeItem() { return nomeItem; }
+    public String getNomeItem() { return nomeItem; }
     public void setNomeItem(String nomeItem) { this.nomeItem = nomeItem; }
-    
-    public double getprecoItem() { return precoItem; }
+
+    public double getPrecoItem() { return precoItem; }
     public void setPrecoItem(double precoItem) { this.precoItem = precoItem; }
 
-
     public String descricaoCompleta() {
-        return getnomeItem() + " - R$" + getprecoItem();
+        return getNomeItem() + " - R$" + getPrecoItem();
     }
 }

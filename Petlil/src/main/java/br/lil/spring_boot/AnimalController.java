@@ -1,6 +1,6 @@
 package br.lil.spring_boot;
 
-import org.springframework.beans.factory.annotation.Autowired;
+ 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,17 +14,20 @@ import br.lil.service.FuncionarioService;
 @RequestMapping("/animais")
 public class AnimalController {
 
-    @Autowired
-    private AnimalService animalService;
-    @Autowired
-    private ClienteService clienteService;
-    @Autowired
-    private FuncionarioService funcionarioService;
+    private final AnimalService animalService;
+    private final ClienteService clienteService;
+    private final FuncionarioService funcionarioService;
+
+    public AnimalController(AnimalService animalService, ClienteService clienteService, FuncionarioService funcionarioService) {
+        this.animalService = animalService;
+        this.clienteService = clienteService;
+        this.funcionarioService = funcionarioService;
+    }
 
     @GetMapping
     public String listar(Model model) {
         model.addAttribute("listaAnimais", animalService.listarTodos());
-        return "animal-lista";
+        return "animallista";
     }
 
     @GetMapping("/novo")
@@ -32,7 +35,7 @@ public class AnimalController {
         model.addAttribute("animal", new Animal());
         model.addAttribute("listaClientes", clienteService.listarTodos());
         model.addAttribute("listaFuncionarios", funcionarioService.listarTodos());
-        return "animal-form";
+        return "animalcadastro";
     }
 
     @PostMapping
@@ -46,7 +49,7 @@ public class AnimalController {
         model.addAttribute("animal", animalService.buscarPorId(id));
         model.addAttribute("listaClientes", clienteService.listarTodos());
         model.addAttribute("listaFuncionarios", funcionarioService.listarTodos());
-        return "animal-form"; 
+        return "animalcadastro";
     }
 
     @PostMapping("/editar/{id}")
@@ -59,13 +62,13 @@ public class AnimalController {
     @GetMapping("/detalhes/{id}")
     public String detalhes(@PathVariable int id, Model model) {
         model.addAttribute("animal", animalService.buscarPorId(id));
-        return "animal-detalhes";
+        return "animaldetalhes";
     }
 
     @GetMapping("/excluir/{id}")
     public String paginaExcluir(@PathVariable int id, Model model) {
         model.addAttribute("animal", animalService.buscarPorId(id));
-        return "animal-excluir";
+        return "animalexcluir";
     }
 
     @PostMapping("/excluir/{id}")

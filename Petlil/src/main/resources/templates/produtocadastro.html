@@ -20,13 +20,13 @@
     <label>Cliente:</label>
     <select th:field="*{cliente}">
         <option value="">Selecione...</option>
-        <option th:each="c : ${clientes}" th:value="${c.idCliente}" th:text="${c.donoNome}"></option>
+        <option th:each="c : ${clientes}" th:value="${c.idDonoAnimal}" th:text="${c.donoNome}"></option>
     </select><br><br>
 
     <label>Petshop:</label>
     <select th:field="*{petshop}">
         <option value="">Selecione...</option>
-        <option th:each="p : ${petshops}" th:value="${p.idPetshop}" th:text="${p.nomePetshop}"></option>
+        <option th:each="p : ${petshops}" th:value="${p.idPetshop}" th:text="${p.nome}"></option>
     </select><br><br>
 
     <button type="submit">Salvar</button>

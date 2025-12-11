@@ -1,31 +1,33 @@
 package br.lil.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.lang.NonNull;
+import java.util.Objects;
 
 import br.lil.dao.AnimalDao;
 import br.lil.model.Animal;
 
 @Service
 public class AnimalService {
-    @Autowired
-    private AnimalDao AnimalDao;
-    private List<Animal> animais = new ArrayList<>();
-    private int autoIncrement = 1;
+    private final AnimalDao animalDao;
+
+    public AnimalService(AnimalDao animalDao) {
+        this.animalDao = animalDao;
+    }
 
     public List<Animal> listarTodos() {
-        return AnimalDao.findAll();
+        return animalDao.findAll();
     }
 
     public Animal buscarPorId(int id) {
-        return AnimalDao.findById(id).orElse(null);
+        return animalDao.findById(id).orElse(null);
     }
 
-    public void salvar(Animal animal) {
-       AnimalDao.save(animal);
+    public void salvar(@NonNull Animal animal) {
+        Objects.requireNonNull(animal);
+        animalDao.save(animal);
     }
 
     public void atualizar(Animal atualizado) {
@@ -43,6 +45,6 @@ public class AnimalService {
     }
 
     public void excluir(int id) {
-        AnimalDao.deleteById(id);
+        animalDao.deleteById(id);
     }
 }

@@ -5,13 +5,13 @@ public class Produto extends Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idProduto;
-   private String descricao;
-   @ManyToOne
-   @JoinColumn(name = "cliente_id")
-   private Cliente cliente;
+    private String descricao;
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
     @ManyToOne
     @JoinColumn(name = "petshop_id")
-   private Petshop petshop;
+    private Petshop petshop;
 
     public Produto(int idProduto, String nomeItem, double precoItem, String descricao, Cliente cliente, Petshop petshop) {
         super(nomeItem, precoItem);
@@ -19,6 +19,10 @@ public class Produto extends Item {
         this.cliente = cliente;
         this.petshop = petshop;
         this.idProduto = idProduto;
+    }
+
+    public Produto() {
+        super();
     }
 
     public String getDescricao() { return descricao; }
