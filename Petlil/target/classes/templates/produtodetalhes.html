@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Produto</title>
+</head>
+<body>
+
+<h1>Detalhes do Produto</h1>
+
+<p><strong>ID:</strong> <span th:text="${produto.idProduto}"></span></p>
+<p><strong>Nome:</strong> <span th:text="${produto.nomeItem}"></span></p>
+<p><strong>Preço:</strong> R$ <span th:text="${produto.precoItem}"></span></p>
+<p><strong>Descrição:</strong> <span th:text="${produto.descricao}"></span></p>
+
+<p><strong>Cliente:</strong> 
+    <span th:text="${produto.cliente != null ? produto.cliente.donoNome : '—'}"></span>
+</p>
+
+<p><strong>Petshop:</strong> 
+    <span th:text="${produto.petshop != null ? produto.petshop.nomePetshop : '—'}"></span>
+</p>
+
+<a href="/produtos"><button>Voltar</button></a>
+<a th:href="@{|/produtos/editar/${produto.idProduto}|}"><button>Editar</button></a>
+<a th:href="@{|/produtos/excluir/${produto.idProduto}|}"><button>Excluir</button></a>
+
+</body>
+</html>

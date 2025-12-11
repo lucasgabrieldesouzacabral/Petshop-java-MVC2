@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Animais</title>
+</head>
+<body>
+
+<h1>Lista de Animais</h1>
+
+<a href="/animais/novo"><button>Novo Animal</button></a>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Espécie</th>
+        <th>Raça</th>
+        <th>Dono</th>
+        <th>Atendido por</th>
+        <th>Ações</th>
+    </tr>
+
+    <tr th:each="animal : ${listaAnimais}">
+        <td th:text="${animal.idAnimal}"></td>
+        <td th:text="${animal.nomeAnimal}"></td>
+        <td th:text="${animal.especieAnimal}"></td>
+        <td th:text="${animal.racaAnimal}"></td>
+        <td th:text="${animal.dono != null ? animal.dono.nome : 'Sem dono'}"></td>
+        <td th:text="${animal.funcionarioatendido != null ? animal.funcionarioatendido.nomeFuncionario : 'N/A'}"></td>
+
+        <td>
+            <a th:href="@{|/animais/detalhes/${animal.idAnimal}|}"><button>Detalhes</button></a>
+            <a th:href="@{|/animais/editar/${animal.idAnimal}|}"><button>Editar</button></a>
+            <a th:href="@{|/animais/excluir/${animal.idAnimal}|}"><button>Excluir</button></a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

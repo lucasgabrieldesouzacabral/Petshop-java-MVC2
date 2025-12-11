@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Excluir Produto</title>
+</head>
+<body>
+
+<h1>Excluir Produto</h1>
+
+<p>Tem certeza que deseja excluir "<strong th:text="${produto.nomeItem}"></strong>"?</p>
+
+<p><strong>ID:</strong> <span th:text="${produto.idProduto}"></span></p>
+<p><strong>Preço:</strong> R$ <span th:text="${produto.precoItem}"></span></p>
+<p><strong>Cliente:</strong> 
+    <span th:text="${produto.cliente != null ? produto.cliente.donoNome : '—'}"></span>
+</p>
+<p><strong>Petshop:</strong> 
+    <span th:text="${produto.petshop != null ? produto.petshop.nomePetshop : '—'}"></span>
+</p>
+
+<form th:action="@{'/produtos/excluir/' + ${produto.idProduto}}" method="post">
+    <button type="submit">Excluir</button>
+</form>
+
+<a href="/produtos"><button>Cancelar</button></a>
+
+</body>
+</html>

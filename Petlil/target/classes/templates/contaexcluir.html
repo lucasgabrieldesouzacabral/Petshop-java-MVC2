@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Excluir Conta</title></head>
+<body>
+
+<h1>Excluir Conta</h1>
+
+<p>Tem certeza que deseja excluir esta conta?</p>
+
+<ul>
+    <li><strong>ID:</strong> <span th:text="${conta.idCompra}"></span></li>
+    <li><strong>Valor:</strong> R$ <span th:text="${conta.pagamento}"></span></li>
+    <li><strong>Cliente:</strong> 
+        <span th:text="${conta.cliente != null ? conta.cliente.donoNome : 'N/A'}"></span>
+    </li>
+</ul>
+
+<form th:action="@{'/contas/excluir/' + ${conta.idCompra}}" method="post">
+    <button type="submit">Confirmar</button>
+</form>
+
+<br>
+<a href="/contas"><button>Cancelar</button></a>
+
+</body>
+</html>

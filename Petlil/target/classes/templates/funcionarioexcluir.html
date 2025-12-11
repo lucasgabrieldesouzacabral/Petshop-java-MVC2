@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Excluir Funcionário</title></head>
+<body>
+
+<h1>Excluir Funcionário</h1>
+
+<p>Tem certeza que deseja excluir este funcionário?</p>
+
+<ul>
+    <li><strong>ID:</strong> <span th:text="${funcionario.id}"></span></li>
+    <li><strong>Nome:</strong> <span th:text="${funcionario.nomeFuncionario}"></span></li>
+    <li><strong>Função:</strong> <span th:text="${funcionario.funcao}"></span></li>
+</ul>
+
+<form th:action="@{'/funcionarios/excluir/' + ${funcionario.id}}" method="post">
+    <button type="submit">Confirmar Exclusão</button>
+</form>
+
+<br>
+<a href="/funcionarios"><button>Cancelar</button></a>
+
+</body>
+</html>

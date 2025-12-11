@@ -1,16 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Menu do Sistema</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f3f3;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .categoria {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        li {
+            margin: 6px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #0077cc;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <a href = "/cliente">Cadastrar Cliente</a>
-    <a href = "/animal">Cadastrar animal</a>
-    
-    <a href = "/funcionario">Cadastrar Funcionario</a>
 
-    <a href = "/conta">Realizar compra</a>
+    <h1>Menu de Páginas</h1>
+
+    <div class="categoria">
+        <h2>Animal</h2>
+        <ul>
+            <li><a href="animalcadastro.html">Cadastro</a></li>
+            <li><a href="animaldetalhes.html">Detalhes</a></li>
+            <li><a href="animalexcluir.html">Excluir</a></li>
+            <li><a href="animallist.html">Lista</a></li>
+        </ul>
+    </div>
+
+    <div class="categoria">
+        <h2>Cliente</h2>
+        <ul>
+            <li><a href="clientecadastro.html">Cadastro</a></li>
+            <li><a href="clientedetalhes.html">Detalhes</a></li>
+            <li><a href="clienteeditar.html">Editar</a></li>
+            <li><a href="clienteexcluir.html">Excluir</a></li>
+            <li><a href="clientelista.html">Lista</a></li>
+        </ul>
+    </div>
+
+
+    <div class="categoria">
+        <h2>Funcionário</h2>
+        <ul>
+            <li><a href="funcionariocadastro.html">Cadastro</a></li>
+            <li><a href="funcionariodetalhes.html">Detalhes</a></li>
+            <li><a href="funcionarioexcluir.html">Excluir</a></li>
+            <li><a href="funcionariolista.html">Lista</a></li>
+        </ul>
+    </div>
+
+    <div class="categoria">
+        <h2>Produto</h2>
+        <ul>
+            <li><a href="produtocadastro.html">Cadastro</a></li>
+            <li><a href="produtodetalhes.html">Detalhes</a></li>
+            <li><a href="produtoexcluir.html">Excluir</a></li>
+            <li><a href="produtolista.html">Lista</a></li>
+        </ul>
+    </div>
+
+    <div class="categoria">
+        <h2>Serviço</h2>
+        <ul>
+            <li><a href="servicocadastro.html">Cadastro</a></li>
+            <li><a href="servicodetalhes.html">Detalhes</a></li>
+            <li><a href="servicoexcluir.html">Excluir</a></li>
+            <li><a href="servicolista.html">Lista</a></li>
+        </ul>
+    </div>
+
+     <div class="categoria">
+        <h2>Conta</h2>
+        <ul>
+            <li><a href="contacadastro.html">Cadastro</a></li>
+            <li><a href="contadetalhes.html">Detalhes</a></li>
+            <li><a href="contalista.html">Lista</a></li>
+        </ul>
+    </div>
+
 </body>
 </html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Excluir Cliente</title></head>
+<body>
+
+<h1>Excluir Cliente</h1>
+
+<p>Tem certeza que deseja excluir este cliente?</p>
+
+<ul>
+    <li><strong>ID:</strong> <span th:text="${cliente.idDonoAnimal}"></span></li>
+    <li><strong>Nome:</strong> <span th:text="${cliente.donoNome}"></span></li>
+    <li><strong>Telefone:</strong> <span th:text="${cliente.telefone}"></span></li>
+    <li><strong>Endereço:</strong> <span th:text="${cliente.endereco}"></span></li>
+</ul>
+
+<form th:action="@{'/clientes/excluir/' + ${cliente.idDonoAnimal}}" method="post">
+    <button type="submit">Confirmar Exclusão</button>
+</form>
+
+<br>
+<a href="/clientes"><button>Cancelar</button></a>
+
+</body>
+</html>

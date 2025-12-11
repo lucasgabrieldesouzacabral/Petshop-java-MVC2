@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Editar Cliente</title></head>
+<body>
+
+<h1>Editar Cliente</h1>
+
+<form th:action="@{'/clientes/' + ${cliente.idDonoAnimal}}" method="post" th:object="${cliente}">
+
+    <label>ID:</label>
+    <input type="text" th:value="${cliente.idDonoAnimal}" readonly><br><br>
+
+    <label>Nome:</label>
+    <input type="text" th:field="*{donoNome}"><br><br>
+
+    <label>Telefone:</label>
+    <input type="text" th:field="*{telefone}"><br><br>
+
+    <label>Endereço:</label>
+    <input type="text" th:field="*{endereco}"><br><br>
+
+    <button type="submit">Salvar</button>
+</form>
+
+<br>
+<a href="/clientes"><button>Cancelar</button></a>
+
+</body>
+</html>
