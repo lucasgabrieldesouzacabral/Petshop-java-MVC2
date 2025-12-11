@@ -62,7 +62,7 @@ public class Cliente {
     
     public void adicionarAnimal(Animal animal) {
         this.animais.add(animal);
-        animal.setDono(this);
+        animal.setIdDonoAnimal(this);
     }
     public List<Animal> getAnimais() {
         return this.animais;

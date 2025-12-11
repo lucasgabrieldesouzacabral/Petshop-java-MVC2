@@ -26,7 +26,7 @@ public class Animal {
         this.idadeAnimal = idadeAnimal;
         this.especieAnimal = especieAnimal;
         this.racaAnimal = racaAnimal;
-        this.dono = dono;
+        this.idDonoAnimal = dono;
         this.pesoAnimal = pesoAnimal;
         this.funcionarioatendido = funcionarioatendido;
     }
@@ -46,7 +46,7 @@ public class Animal {
     public String getRacaAnimal() { return racaAnimal; }
     public void setRacaAnimal(String racaAnimal) { this.racaAnimal = racaAnimal; }
     
-    public Cliente getIdDonoAnimal() { return idDonoAnimal; }
+    public Cliente getidDonoAnimal() { return idDonoAnimal; }
     public void setIdDonoAnimal(Cliente idDonoAnimal) { this.idDonoAnimal = idDonoAnimal; }
     
     public double getPesoAnimal() { return pesoAnimal; }
