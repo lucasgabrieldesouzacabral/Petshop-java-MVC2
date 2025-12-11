@@ -1,12 +1,16 @@
-package br.ll.spring_boot;
+package br.lil.spring_boot;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.ll.model.Cliente;
-import br.ll.service.ClienteService;
+import br.lil.model.Cliente;
+import br.lil.service.ClienteService;
 
 @Controller
 @RequestMapping("/clientes")

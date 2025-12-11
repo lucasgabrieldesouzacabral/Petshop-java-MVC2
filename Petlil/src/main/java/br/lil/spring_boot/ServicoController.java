@@ -1,14 +1,18 @@
-package br.ll.spring_boot;
+package br.lil.spring_boot;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.ll.model.Servico;
-import br.ll.service.ServicoService;
-import br.ll.service.AnimalService;
-import br.ll.service.FuncionarioService;
+import br.lil.model.Servico;
+import br.lil.service.AnimalService;
+import br.lil.service.FuncionarioService;
+import br.lil.service.ServicoService;
 
 @Controller
 @RequestMapping("/servicos")

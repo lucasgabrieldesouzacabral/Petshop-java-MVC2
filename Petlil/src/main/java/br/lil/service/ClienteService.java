@@ -1,12 +1,12 @@
-package br.ll.service;
+package br.lil.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import br.ll.dao.ClienteDao;
-import br.ll.model.Cliente;
+import java.util.ArrayList;
+import br.lil.dao.ClienteDao;
+import br.lil.model.Cliente;
 
 @Service
 public class ClienteService {
@@ -28,7 +28,7 @@ public class ClienteService {
     }
 
     public void atualizar(Cliente clienteAtualizado) {
-        Cliente cliente = buscarPorId(clienteAtualizado.getIdDonoAnimal());
+        Cliente cliente = findById(clienteAtualizado.getIdDonoAnimal());
         if (cliente != null) {
             cliente.setDonoNome(clienteAtualizado.getDonoNome());
             cliente.setEndereco(clienteAtualizado.getEndereco());

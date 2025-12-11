@@ -1,14 +1,14 @@
-package br.ll.spring_boot;
+package br.lil.spring_boot;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import br.ll.model.Animal;
-import br.ll.service.AnimalService;
-import br.ll.service.ClienteService;
-import br.ll.service.FuncionarioService;
+import br.lil.model.Animal;
+import br.lil.service.AnimalService;
+import br.lil.service.ClienteService;
+import br.lil.service.FuncionarioService;
 
 @Controller
 @RequestMapping("/animais")

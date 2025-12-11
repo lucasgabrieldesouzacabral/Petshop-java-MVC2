@@ -1,4 +1,4 @@
-package br.ll.spring_boot;
+package br.lil.spring_boot;
 
 import java.util.List;
 
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import br.ll.model.Funcionario;
-import br.ll.model.Animal;
-import br.ll.service.FuncionarioService;
-import br.ll.service.AnimalService;
+import br.lil.model.Funcionario;
+import br.lil.model.Animal;
+import br.lil.service.FuncionarioService;
+import br.lil.service.AnimalService;
 
 @Controller
 @RequestMapping("/funcionarios")

@@ -1,4 +1,4 @@
-package br.ll.spring_boot;
+package br.lil.spring_boot;
 
 import java.util.List;
 
@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import br.ll.model.Conta;
-import br.ll.model.Produto;
-import br.ll.model.Servico;
-import br.ll.service.ContaService;
-import br.ll.service.ClienteService;
-import br.ll.service.AnimalService;
-import br.ll.service.FuncionarioService;
-import br.ll.service.ProdutoService;
-import br.ll.service.ServicoService;
-import br.ll.service.TipoPagamentoService;
+import br.lil.model.Conta;
+import br.lil.model.Produto;
+import br.lil.model.Servico;
+import br.lil.service.ContaService;
+import br.lil.service.ClienteService;
+import br.lil.service.AnimalService;
+import br.lil.service.FuncionarioService;
+import br.lil.service.ProdutoService;
+import br.lil.service.ServicoService;
+import br.lil.service.TipoPagamentoService;
 
 @Controller
 @RequestMapping("/contas")

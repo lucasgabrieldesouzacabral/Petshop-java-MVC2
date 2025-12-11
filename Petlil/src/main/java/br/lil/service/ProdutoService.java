@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.ll.dao.ProdutoDao;
-import br.ll.model.Produto;
+import br.lil.dao.ProdutoDao;
+import br.lil.model.Produto;
 
 @Service
 public class ProdutoService {

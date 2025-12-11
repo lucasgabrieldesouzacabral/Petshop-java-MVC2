@@ -1,10 +1,10 @@
-package br.ll.service;
+package br.lil.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.ll.dao.ContaDao;
-import br.ll.model.Conta;
+import br.lil.dao.ContaDao;
+import br.lil.model.Conta;
 
 import java.util.List;
 

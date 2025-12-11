@@ -1,14 +1,14 @@
-package br.ll.spring_boot;
+package br.lil.spring_boot;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import br.ll.model.Produto;
-import br.ll.service.ProdutoService;
-import br.ll.service.ClienteService;
-import br.ll.service.PetshopService;
+import br.lil.model.Produto;
+import br.lil.service.ProdutoService;
+import br.lil.service.ClienteService;
+import br.lil.service.PetshopService;
 
 @Controller
 @RequestMapping("/produtos")

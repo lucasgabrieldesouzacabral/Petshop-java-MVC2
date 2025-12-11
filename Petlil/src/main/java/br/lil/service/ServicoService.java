@@ -1,12 +1,12 @@
-package br.ll.service;
+package br.lil.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.ll.dao.ServicoDao;
-import br.ll.model.Servico;
+import br.lil.dao.ServicoDao;
+import br.lil.model.Servico;
 
 @Service
 public class ServicoService {

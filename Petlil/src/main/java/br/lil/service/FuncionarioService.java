@@ -1,12 +1,12 @@
-package br.ll.service;
+package br.lil.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import br.ll.dao.FuncionarioDao;
-import br.ll.model.Funcionario;
+import java.util.ArrayList;
+import br.lil.dao.FuncionarioDao;
+import br.lil.model.Funcionario;
 
 @Service
 public class FuncionarioService {
@@ -28,7 +28,7 @@ public class FuncionarioService {
     }
 
     public void atualizar(Funcionario atualizado) {
-        Funcionario funcionario = buscarPorId(atualizado.getId());
+        Funcionario funcionario = findById(atualizado.getId());
 
         if (funcionario != null) {
             funcionario.setNomeFuncionario(atualizado.getNomeFuncionario());
