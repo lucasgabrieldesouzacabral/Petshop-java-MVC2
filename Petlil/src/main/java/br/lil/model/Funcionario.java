@@ -1,7 +1,13 @@
 package br.lil.model;
-import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 @Entity
 public class Funcionario {
     @Id
@@ -35,10 +41,10 @@ public class Funcionario {
     public String getNomeFuncionario() { return nomeFuncionario; }
     public void setNomeFuncionario(String nomeFuncionario) { this.nomeFuncionario = nomeFuncionario; }
     
-    public String getfuncao() { return funcao; }
+    public String getFuncao() { return funcao; }
     public void setFuncao(String funcao) { this.funcao = funcao; }
     
-    public double getsalario() { return salario; }
+    public double getSalario() { return salario; }
     public void setSalario(double salario) { this.salario = salario; }
     
     public List<Animal> getAnimaisAtendidos() { return animaisAtendidos; }

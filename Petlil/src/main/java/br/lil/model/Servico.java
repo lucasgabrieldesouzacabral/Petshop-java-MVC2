@@ -1,5 +1,10 @@
 package br.lil.model;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 @Entity
 public class Servico extends Item{
     @Id
@@ -24,45 +29,17 @@ public class Servico extends Item{
     
     }
    
-    public String getServicoHorario() {
-        return servicoHorario;
-    }
-    public void setServicoHorario(String servicoHorario) {
-        this.servicoHorario = servicoHorario;
-    }
-   
-    public String getNomeItem() {
-        return super.getnomeItem();
-    }
-    public void setNomeItem(String nomeItem) {
-        super.setNomeItem(nomeItem);
-    }
-   
-    public double getPrecoItem() {
-        return super.getprecoItem();
-    }
-    public void setPrecoItem(double precoItem) {
-        super.setPrecoItem(precoItem);
-    }
-    
-    public int getIdServico() {
-        return idServico;
-    }
-    public void setIdServico(int idServico) {
-        this.idServico = idServico;
-    }
-    public Animal getAnimal() {
-        return animal;
-    }
-    public void setAnimal(Animal animal) {
-        this.animal = animal;
-    }
-    public Funcionario getFuncionario() {
-        return funcionario;
-    }
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
-    }
+    public int getIdServico() { return idServico; }
+    public void setIdServico(int idServico) { this.idServico = idServico; }
+
+    public String getServicoHorario() { return servicoHorario; }
+    public void setServicoHorario(String servicoHorario) { this.servicoHorario = servicoHorario; }
+
+    public Animal getAnimal() { return animal; }
+    public void setAnimal(Animal animal) { this.animal = animal; }
+
+    public Funcionario getFuncionario() { return funcionario; }
+    public void setFuncionario(Funcionario funcionario) { this.funcionario = funcionario; }
 
     @Override
     public String descricaoCompleta() {

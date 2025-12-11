@@ -1,10 +1,11 @@
 package br.lil.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
+
 import br.lil.dao.AnimalDao;
 import br.lil.model.Animal;
 
