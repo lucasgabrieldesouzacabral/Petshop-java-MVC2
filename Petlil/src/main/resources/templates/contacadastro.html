@@ -8,6 +8,7 @@
 </head>
 <body>
 <div class="container">
+    <a href="/"><button class="btn btn-home">Home</button></a>
 
 <h1 th:text="${conta.idCompra == 0 ? 'Nova Conta' : 'Editar Conta'}"></h1>
 
@@ -40,6 +41,20 @@
         <option value="2">Débito</option>
         <option value="3">Crédito</option>
         <option value="4">PIX</option>
+    </select><br><br>
+
+    <label>Produtos:</label>
+    <select name="produtosSelecionados" multiple size="5">
+        <option th:each="p : ${produtos}"
+                th:value="${p.idProduto}"
+                th:text="${p.nomeProduto + ' - R$ ' + p.precoItem}"></option>
+    </select><br><br>
+
+    <label>Serviços:</label>
+    <select name="servicosSelecionados" multiple size="5">
+        <option th:each="s : ${servicos}"
+                th:value="${s.idServico}"
+                th:text="${s.nomeServico + ' - R$ ' + s.precoItem}"></option>
     </select><br><br>
 
     <button type="submit" class="btn btn-primary">Salvar</button>
