@@ -65,7 +65,6 @@ public class ContaController {
         model.addAttribute("funcionarios", funcionarioService.listarTodos());
         model.addAttribute("produtos", produtoService.listarTodos());
         model.addAttribute("servicos", servicoService.listarTodos());
-        model.addAttribute("tiposPagamento", tipoPagamentoService.listarTodos());
 
         return "contacadastro";
     }
@@ -75,7 +74,7 @@ public class ContaController {
                             @RequestParam(required = false) List<Integer> produtosSelecionados,
                             @RequestParam(required = false) List<Integer> servicosSelecionados) {
 
-        double total = 0;
+        double total = conta.getPagamento();
 
         if (produtosSelecionados != null) {
             for (Integer id : produtosSelecionados) {
@@ -105,7 +104,6 @@ public class ContaController {
         model.addAttribute("funcionarios", funcionarioService.listarTodos());
         model.addAttribute("produtos", produtoService.listarTodos());
         model.addAttribute("servicos", servicoService.listarTodos());
-        model.addAttribute("tiposPagamento", tipoPagamentoService.listarTodos());
         return "contacadastro";
     }
 
@@ -113,7 +111,7 @@ public class ContaController {
     public String atualizarConta(@PathVariable int id, @ModelAttribute Conta conta,
                                 @RequestParam(required = false) List<Integer> produtosSelecionados,
                                 @RequestParam(required = false) List<Integer> servicosSelecionados) {
-        double total = 0;
+        double total = conta.getPagamento();
         if (produtosSelecionados != null) {
             for (Integer pid : produtosSelecionados) {
                 Produto p = produtoService.buscarPorId(pid);

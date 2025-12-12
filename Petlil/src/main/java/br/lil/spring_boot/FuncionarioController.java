@@ -66,8 +66,8 @@ public class FuncionarioController {
 
         List<Animal> atendidos = animalService.listarTodos()
             .stream()
-            .filter(a -> a.getfuncionarioatendido() != null &&
-                a.getfuncionarioatendido().getId() == id)
+            .filter(a -> a.getFuncionarioatendido() != null &&
+                a.getFuncionarioatendido().getId() == id)
             .collect(java.util.stream.Collectors.toList());
 
         model.addAttribute("animaisAtendidos", atendidos);

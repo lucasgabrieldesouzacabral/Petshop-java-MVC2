@@ -11,8 +11,8 @@
 
 <h1 th:text="${animal.idAnimal == 0 ? 'Novo Animal' : 'Editar Animal'}"></h1>
 
-<form th:action="${animal.idAnimal == 0 ? '/animais' : '/animais/editar/' + ${animal.idAnimal}}" 
-      method="post" th:object="${animal}">
+<form th:action="${animal.idAnimal == 0 ? '/animais' : '/animais/editar/' + animal.idAnimal}" 
+    method="post" th:object="${animal}">
 
     <label>Nome:</label>
     <input type="text" th:field="*{nomeAnimal}"><br><br>

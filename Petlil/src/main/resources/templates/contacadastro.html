@@ -11,8 +11,8 @@
 
 <h1 th:text="${conta.idCompra == 0 ? 'Nova Conta' : 'Editar Conta'}"></h1>
 
-<form th:action="${conta.idCompra == 0 ? '/contas' : '/contas/editar/' + ${conta.idCompra}}"
-      method="post" th:object="${conta}">
+<form th:action="${conta.idCompra == 0 ? '/contas' : '/contas/editar/' + conta.idCompra}"
+    method="post" th:object="${conta}">
 
     <label>Valor da Conta:</label>
     <input type="number" step="0.01" th:field="*{pagamento}"><br><br>
@@ -36,9 +36,10 @@
     <label>Tipo de Pagamento:</label>
     <select th:field="*{tipoPagamento}">
         <option value="">Selecione...</option>
-        <option th:each="t : ${tiposPagamento}"
-                th:value="${t.idPagamento}"
-                th:text="${t.nomePagamento}"></option>
+        <option value="1">Dinheiro</option>
+        <option value="2">Débito</option>
+        <option value="3">Crédito</option>
+        <option value="4">PIX</option>
     </select><br><br>
 
     <button type="submit" class="btn btn-primary">Salvar</button>

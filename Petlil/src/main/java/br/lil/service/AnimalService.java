@@ -39,8 +39,9 @@ public class AnimalService {
             existente.setEspecieAnimal(atualizado.getEspecieAnimal());
             existente.setRacaAnimal(atualizado.getRacaAnimal());
             existente.setPesoAnimal(atualizado.getPesoAnimal());
-            existente.setIdDonoAnimal(atualizado.getidDonoAnimal());
-            existente.setfuncionarioatendido(atualizado.getfuncionarioatendido());
+            existente.setIdDonoAnimal(atualizado.getIdDonoAnimal());
+            existente.setFuncionarioatendido(atualizado.getFuncionarioatendido());
+            animalDao.save(existente);
         }
     }
 

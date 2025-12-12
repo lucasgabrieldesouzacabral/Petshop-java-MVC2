@@ -12,7 +12,7 @@
 <h1 th:text="${servico.idServico == 0 ? 'Novo Serviço' : 'Editar Serviço'}"></h1>
 
 <form th:action="${servico.idServico == 0 ? '/servicos' : '/servicos/editar/' + servico.idServico}"
-      method="post" th:object="${servico}">
+    method="post" th:object="${servico}">
 
     <label>Nome:</label>
     <input type="text" th:field="*{nomeItem}"><br><br>

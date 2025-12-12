@@ -26,7 +26,7 @@
         <td th:text="${c.idCompra}"></td>
         <td th:text="${c.cliente != null ? c.cliente.donoNome : 'N/A'}"></td>
         <td th:text="${c.atendente != null ? c.atendente.nomeFuncionario : 'N/A'}"></td>
-        <td th:text="'R$ ' + c.pagamento"></td>
+        <td th:text="${'R$ ' + c.pagamento}"></td>
         <td th:text="${c.tipoPagamento != null ? c.tipoPagamento.nomePagamento : 'N/A'}"></td>
 
         <td>

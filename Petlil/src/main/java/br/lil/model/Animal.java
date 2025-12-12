@@ -46,14 +46,12 @@ public class Animal {
     public String getRacaAnimal() { return racaAnimal; }
     public void setRacaAnimal(String racaAnimal) { this.racaAnimal = racaAnimal; }
     
-    public Cliente getidDonoAnimal() { return idDonoAnimal; }
+    public Cliente getIdDonoAnimal() { return idDonoAnimal; }
     public void setIdDonoAnimal(Cliente idDonoAnimal) { this.idDonoAnimal = idDonoAnimal; }
     
     public double getPesoAnimal() { return pesoAnimal; }
     public void setPesoAnimal(double pesoAnimal) { this.pesoAnimal = pesoAnimal; }
-    
-    public int getIdDonoAnimal() { return idDonoAnimal != null ? idDonoAnimal.getIdDonoAnimal() : 0; }
 
-    public Funcionario getfuncionarioatendido() { return funcionarioatendido; }
-    public void setfuncionarioatendido(Funcionario funcionarioatendido) { this.funcionarioatendido = funcionarioatendido; }
+    public Funcionario getFuncionarioatendido() { return funcionarioatendido; }
+    public void setFuncionarioatendido(Funcionario funcionarioatendido) { this.funcionarioatendido = funcionarioatendido; }
 }

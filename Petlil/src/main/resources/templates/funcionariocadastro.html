@@ -11,8 +11,8 @@
 
 <h1 th:text="${funcionario.id == 0 ? 'Novo Funcionário' : 'Editar Funcionário'}"></h1>
 
-<form th:action="${funcionario.id == 0 ? '/funcionarios' : '/funcionarios/editar/' + ${funcionario.id}}"
-      method="post" th:object="${funcionario}">
+<form th:action="${funcionario.id == 0 ? '/funcionarios' : '/funcionarios/editar/' + funcionario.id}"
+    method="post" th:object="${funcionario}">
 
     <label>Nome:</label>
     <input type="text" th:field="*{nomeFuncionario}"><br><br>

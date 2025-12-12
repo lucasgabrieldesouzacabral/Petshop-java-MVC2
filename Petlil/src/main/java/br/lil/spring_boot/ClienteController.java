@@ -59,7 +59,7 @@ public class ClienteController {
         
         List<Animal> animaisDoCliente = animalService.listarTodos()
             .stream()
-            .filter(a -> a.getidDonoAnimal() != null && a.getidDonoAnimal().getIdDonoAnimal() == id)
+            .filter(a -> a.getIdDonoAnimal() != null && a.getIdDonoAnimal().getIdDonoAnimal() == id)
             .collect(Collectors.toList());
         
         model.addAttribute("animaisDoCliente", animaisDoCliente);

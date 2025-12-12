@@ -30,9 +30,9 @@
         <td th:text="${p.petshop != null ? p.petshop.nome : '—'}"></td>
 
         <td class="action-buttons">
-            <a th:href="@{|/produtos/detalhes/${p.idProduto}|}}"><button class="btn btn-info">Detalhes</button></a>
-            <a th:href="@{|/produtos/editar/${p.idProduto}|}}"><button class="btn btn-edit">Editar</button></a>
-            <a th:href="@{|/produtos/excluir/${p.idProduto}|}}"><button class="btn btn-delete">Excluir</button></a>
+            <a th:href="@{|/produtos/detalhes/${p.idProduto}|}"><button class="btn btn-info">Detalhes</button></a>
+            <a th:href="@{|/produtos/editar/${p.idProduto}|}"><button class="btn btn-edit">Editar</button></a>
+            <a th:href="@{|/produtos/excluir/${p.idProduto}|}"><button class="btn btn-delete">Excluir</button></a>
         </td>
     </tr>
 

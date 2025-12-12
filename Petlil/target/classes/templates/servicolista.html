@@ -34,9 +34,9 @@
         <td th:text="${s.funcionario != null ? s.funcionario.nomeFuncionario : '—'}"></td>
 
         <td class="action-buttons">
-            <a th:href="@{|/servicos/detalhes/${s.idServico}|}}"><button class="btn btn-info">Detalhes</button></a>
-            <a th:href="@{|/servicos/editar/${s.idServico}|}}"><button class="btn btn-edit">Editar</button></a>
-            <a th:href="@{|/servicos/excluir/${s.idServico}|}}"><button class="btn btn-delete">Excluir</button></a>
+            <a th:href="@{|/servicos/detalhes/${s.idServico}|}"><button class="btn btn-info">Detalhes</button></a>
+            <a th:href="@{|/servicos/editar/${s.idServico}|}"><button class="btn btn-edit">Editar</button></a>
+            <a th:href="@{|/servicos/excluir/${s.idServico}|}"><button class="btn btn-delete">Excluir</button></a>
         </td>
     </tr>
 

@@ -7,6 +7,9 @@ public class TipoPagamento {
     private int idPagamento;
     private String nomePagamento;
 
+    public TipoPagamento() {
+    }
+
     public TipoPagamento(int idPagamento, String nomePagamento) {
         this.idPagamento = idPagamento;
         this.nomePagamento = nomePagamento;
